@@ -32,7 +32,7 @@ final class FindNavigatorListViewController: NSViewController {
         self.outlineView = NSOutlineView()
         self.outlineView.dataSource = self
         self.outlineView.delegate = self
-        self.outlineView.headerView = nil
+        self.outlineView.headerView = NSTableHeaderView.init()
         self.outlineView.lineBreakMode = .byTruncatingTail
 
         let column = NSTableColumn(identifier: .init(rawValue: "Cell"))

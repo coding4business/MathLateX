@@ -110,9 +110,14 @@ private extension SourceControlGeneralView {
     }
 
     private var defaultBranchName: some View {
-        TextField(text: $text) {
-            Text("Default branch name")
-            Text("Cannot contain spaces, backslashes, or other symbols")
+        Picker(
+            "Default branch name",
+            selection: $settings.defaultBranchName
+        ) {
+            Text("Sort by Name")
+                .tag(SettingsData.ControlNavigatorOrder.sortByName)
+            Text("Sort by Date")
+                .tag(SettingsData.ControlNavigatorOrder.sortByDate)
         }
     }
 }

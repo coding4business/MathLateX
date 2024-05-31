@@ -276,4 +276,10 @@ extension Array {
     var third: Element? {
         self.count > 2 ? self[2] : nil
     }
+    var fourth: Element? {
+        self.count > 3 ? self[3] : nil
+    }
+    var fifth: Element? {
+        self.count > 4 ? self[4] : nil
+    }
 }

@@ -83,14 +83,14 @@ class CEOpenWith: FIFinderSync {
 
         let menu = NSMenu(title: "")
         let menuItem = NSMenuItem(
-            title: "Open in CodeEdit",
+            title: "Open in MathLateX",
             action: #selector(openInCodeEditAction(_:)),
             keyEquivalent: ""
         )
         menuItem.image = NSImage.init(named: "icon")
 
         let enableOpenInCE = defaults.bool(forKey: "enableOpenInCE")
-        logger.info("Enable Open In CodeEdit value is \(enableOpenInCE, privacy: .public)")
+        logger.info("Enable Open In MathLateX value is \(enableOpenInCE, privacy: .public)")
         if enableOpenInCE {
             menu.addItem(menuItem)
         }

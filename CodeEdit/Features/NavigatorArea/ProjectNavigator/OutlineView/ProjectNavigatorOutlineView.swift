@@ -34,6 +34,7 @@ struct ProjectNavigatorOutlineView: NSViewControllerRepresentable {
         nsViewController.fileExtensionsVisibility = prefs.preferences.general.fileExtensionsVisibility
         nsViewController.shownFileExtensions = prefs.preferences.general.shownFileExtensions
         nsViewController.hiddenFileExtensions = prefs.preferences.general.hiddenFileExtensions
+        nsViewController.discardEditing()
         /// if the window becomes active from background, it will restore the selection to outline view.
         nsViewController.updateSelection(itemID: workspace.editorManager.activeEditor.selectedTab?.file.id)
         return

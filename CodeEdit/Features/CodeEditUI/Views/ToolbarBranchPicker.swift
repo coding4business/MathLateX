@@ -36,7 +36,7 @@ struct ToolbarBranchPicker: View {
                 if currentBranch != nil {
                     Image(symbol: "branch")
                 } else {
-                    Image(systemName: "folder.fill.badge.gearshape")
+                    Image(symbol: "nil")
                 }
             }
             .foregroundColor(controlActive == .inactive ? inactiveColor : .secondary)
@@ -62,7 +62,6 @@ struct ToolbarBranchPicker: View {
                     })
                     .menuIndicator(isHovering ? .visible : .hidden)
                     .buttonStyle(.borderless)
-                    .padding(.leading, -3)
                     .padding(.bottom, 2)
                 }
             }

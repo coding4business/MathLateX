@@ -53,7 +53,6 @@ final class ProjectNavigatorViewController: NSViewController {
         self.scrollView = NSScrollView()
         self.scrollView.hasVerticalScroller = true
         self.view = scrollView
-
         self.outlineView = NSOutlineView()
         self.outlineView.dataSource = self
         self.outlineView.delegate = self
@@ -67,7 +66,6 @@ final class ProjectNavigatorViewController: NSViewController {
         let column = NSTableColumn(identifier: .init(rawValue: "Cell"))
         column.title = "Cell"
         outlineView.addTableColumn(column)
-
         outlineView.setDraggingSourceOperationMask(.move, forLocal: false)
         outlineView.registerForDraggedTypes([.fileURL])
 

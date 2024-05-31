@@ -24,7 +24,7 @@ enum NavigatorTab: AreaTab {
         case .search:
             return "magnifyingglass"
         case .uiExtension(_, let data):
-            return data.icon ?? "e.square"
+            return data.icon ?? "e.folder"
         }
     }
 

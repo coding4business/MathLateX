@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B658FB2B27DA9E0F00EA4DBD"
-               BuildableName = "CodeEdit.app"
-               BlueprintName = "CodeEdit"
-               ReferencedContainer = "container:CodeEdit.xcodeproj">
+               BuildableName = "MathLateX.app"
+               BlueprintName = "MathLateX"
+               ReferencedContainer = "container:MathLateX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B658FB3C27DA9E1000EA4DBD"
-               BuildableName = "CodeEditTests.xctest"
-               BlueprintName = "CodeEditTests"
-               ReferencedContainer = "container:CodeEdit.xcodeproj">
+               BuildableName = "MathLateXTests.xctest"
+               BlueprintName = "MathLateXTests"
+               ReferencedContainer = "container:MathLateX.xcodeproj">
             </BuildableReference>
             <SkippedTests>
                <Test
@@ -129,9 +129,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B658FB2B27DA9E0F00EA4DBD"
-            BuildableName = "CodeEdit.app"
-            BlueprintName = "CodeEdit"
-            ReferencedContainer = "container:CodeEdit.xcodeproj">
+            BuildableName = "MathLateX.app"
+            BlueprintName = "MathLateX"
+            ReferencedContainer = "container:MathLateX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -146,9 +146,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B658FB2B27DA9E0F00EA4DBD"
-            BuildableName = "CodeEdit.app"
-            BlueprintName = "CodeEdit"
-            ReferencedContainer = "container:CodeEdit.xcodeproj">
+            BuildableName = "MathLateX.app"
+            BlueprintName = "MathLateX"
+            ReferencedContainer = "container:MathLateX.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

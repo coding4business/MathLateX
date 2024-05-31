@@ -69,6 +69,12 @@ final class CodeEditSplitViewController: NSSplitViewController {
             ) as? Bool ?? false
         }
 
+        if let firstSplitView = splitViewItems.fourth {
+            firstSplitView.isCollapsed = workspace.getFromWorkspaceState(
+                .navigatorCollapsed
+            ) as? Bool ?? false
+        }
+
         if let lastSplitView = splitViewItems.last {
             lastSplitView.isCollapsed = workspace.getFromWorkspaceState(
                 .inspectorCollapsed
@@ -148,6 +154,7 @@ final class CodeEditSplitViewController: NSSplitViewController {
             return
         }
         view.window?.toolbar?.insertItem(withItemIdentifier: .itemListTrackingSeparator, at: 4)
+
     }
 
     /// Quick fix for list tracking separator needing to be removed after closing the inspector with a drag

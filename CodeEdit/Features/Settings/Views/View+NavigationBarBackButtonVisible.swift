@@ -20,9 +20,10 @@ struct NavigationBarBackButtonVisible: ViewModifier {
                     print(self.presentationMode.wrappedValue)
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image(systemName: "cloud")
                 }
             }
+
         }
         .hideSidebarToggle()
         .onAppear {

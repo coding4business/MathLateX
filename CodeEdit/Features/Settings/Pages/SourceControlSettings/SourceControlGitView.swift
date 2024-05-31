@@ -23,6 +23,9 @@ struct SourceControlGitView: View {
                 preferToRebaseWhenPulling
                 showMergeCommitsInPerFileLog
             }
+            Section {
+                bottomToolbar
+            }
         }
     }
 }
@@ -51,7 +54,7 @@ private extension SourceControlGitView {
     }
 
     private var bottomToolbar: some View {
-        HStack(spacing: 12) {
+        HStack(alignment: .bottom, spacing: 12) {
             Button {} label: {
                 Image(systemName: "plus")
                     .foregroundColor(Color.secondary)
@@ -60,7 +63,7 @@ private extension SourceControlGitView {
             Button {} label: {
                 Image(systemName: "minus")
             }
-            .disabled(true)
+            .disabled(false)
             .buttonStyle(.plain)
             Spacer()
         }
