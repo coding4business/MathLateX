@@ -406,6 +406,11 @@
 		85773E1E2A3E0A1F00C5D926 /* SettingsSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85773E1D2A3E0A1F00C5D926 /* SettingsSearchResult.swift */; };
 		85E4122A2A46C8CA00183F2B /* LocationsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E412292A46C8CA00183F2B /* LocationsSettings.swift */; };
 		9D36E1BF2B5E7D7500443C41 /* GitBranchesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D36E1BE2B5E7D7500443C41 /* GitBranchesGroup.swift */; };
+		AA198A702C0A212E00A59514 /* UserDropDownPickerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA198A6F2C0A212E00A59514 /* UserDropDownPickerState.swift */; };
+		AA198A732C0A219200A59514 /* UserDropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA198A722C0A219200A59514 /* UserDropDownPicker.swift */; };
+		AA198A752C0A21FB00A59514 /* UserMenuDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA198A742C0A21FB00A59514 /* UserMenuDropDown.swift */; };
+		AA198A792C0A504500A59514 /* ToolbarRightSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA198A782C0A504500A59514 /* ToolbarRightSidebar.swift */; };
+		AA198ABD2C0CAA2E00A59514 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA198ABC2C0CAA2E00A59514 /* AppMenu.swift */; };
 		AA3032AB2C0825870089A342 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3032AA2C0825870089A342 /* Language.swift */; };
 		AA3032AD2C0825B00089A342 /* LanguageSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3032AC2C0825AF0089A342 /* LanguageSettingsView.swift */; };
 		AA3032AF2C0826380089A342 /* LanguageSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3032AE2C0826380089A342 /* LanguageSettings.swift */; };
@@ -971,6 +976,11 @@
 		85E412292A46C8CA00183F2B /* LocationsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsSettings.swift; sourceTree = "<group>"; };
 		8B9A0E162B9FE84B007E2DBF /* Pre.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pre.xcconfig; sourceTree = "<group>"; };
 		9D36E1BE2B5E7D7500443C41 /* GitBranchesGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitBranchesGroup.swift; sourceTree = "<group>"; };
+		AA198A6F2C0A212E00A59514 /* UserDropDownPickerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDropDownPickerState.swift; sourceTree = "<group>"; };
+		AA198A722C0A219200A59514 /* UserDropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDropDownPicker.swift; sourceTree = "<group>"; };
+		AA198A742C0A21FB00A59514 /* UserMenuDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuDropDown.swift; sourceTree = "<group>"; };
+		AA198A782C0A504500A59514 /* ToolbarRightSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarRightSidebar.swift; sourceTree = "<group>"; };
+		AA198ABC2C0CAA2E00A59514 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		AA3032AA2C0825870089A342 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		AA3032AC2C0825AF0089A342 /* LanguageSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageSettingsView.swift; path = CodeEdit/Features/Settings/Pages/LanguageSettings/LanguageSettingsView.swift; sourceTree = SOURCE_ROOT; };
 		AA3032AE2C0826380089A342 /* LanguageSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettings.swift; sourceTree = "<group>"; };
@@ -1452,7 +1462,6 @@
 		5831E3C52933E6CB00D5A6D2 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				AA3032BD2C0847060089A342 /* User */,
 				582213EE2918345500EFE361 /* About */,
 				5878DA7D291862BC00DD95A3 /* Acknowledgements */,
 				588847642992A30900996D95 /* CEWorkspace */,
@@ -1473,6 +1482,8 @@
 				6C147C4729A329E50089B630 /* SplitView */,
 				588224FF292C280D00E83CDE /* StatusBar */,
 				5879827E292ED0FB0085B254 /* TerminalEmulator */,
+				AA198A762C0A4FE200A59514 /* Toolbar */,
+				AA3032BD2C0847060089A342 /* User */,
 				58822512292C280D00E83CDE /* UtilityArea */,
 				581BFB4B2926431000D251EC /* Welcome */,
 				6CAAF68F29BCC6F900A1F48A /* WindowCommands */,
@@ -2571,6 +2582,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		AA198A762C0A4FE200A59514 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				AA198A772C0A4FF200A59514 /* Sidebar */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		AA198A772C0A4FF200A59514 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				AA198A782C0A504500A59514 /* ToolbarRightSidebar.swift */,
+				AA198ABC2C0CAA2E00A59514 /* AppMenu.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		AA3032A72C0825550089A342 /* LanguageSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2601,6 +2629,7 @@
 		AA3032C02C08471E0089A342 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AA198A6F2C0A212E00A59514 /* UserDropDownPickerState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2609,6 +2638,8 @@
 			isa = PBXGroup;
 			children = (
 				AA3032C52C0847400089A342 /* UserAvatarView.swift */,
+				AA198A722C0A219200A59514 /* UserDropDownPicker.swift */,
+				AA198A742C0A21FB00A59514 /* UserMenuDropDown.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3431,6 +3462,8 @@
 				6C5B63DE29C76213005454BA /* WindowCodeFileView.swift in Sources */,
 				58F2EB08292FB2B0004A9BDE /* TextEditingSettings.swift in Sources */,
 				201169DB2837B34000F92B46 /* SourceControlNavigatorChangedFileView.swift in Sources */,
+				AA198A702C0A212E00A59514 /* UserDropDownPickerState.swift in Sources */,
+				AA198ABD2C0CAA2E00A59514 /* AppMenu.swift in Sources */,
 				5882252E292C280D00E83CDE /* UtilityAreaMaximizeButton.swift in Sources */,
 				77A01E2E2BB4261200F0EA38 /* CEWorkspaceSettings.swift in Sources */,
 				6C4104E9297C970F00F472BA /* AboutDefaultView.swift in Sources */,
@@ -3690,6 +3723,7 @@
 				B60718462B17DC15009CDAB4 /* RepoOutlineGroupItem.swift in Sources */,
 				613899B32B6E6FEE00A5CAF6 /* FuzzySearchable.swift in Sources */,
 				B697937A29FF5668002027EC /* AccountsSettingsAccountLink.swift in Sources */,
+				AA198A732C0A219200A59514 /* UserDropDownPicker.swift in Sources */,
 				5B698A0D2B26327800DE9392 /* SearchSettings.swift in Sources */,
 				B685DE7929CC9CCD002860C8 /* StatusBarIcon.swift in Sources */,
 				587B9DA629300ABD00AC7927 /* ToolbarBranchPicker.swift in Sources */,
@@ -3721,6 +3755,7 @@
 				5879821B292D92370085B254 /* SearchResultMatchModel.swift in Sources */,
 				04BA7C1E2AE2D8A000584E1C /* GitClient+Clone.swift in Sources */,
 				58F2EB09292FB2B0004A9BDE /* TerminalSettings.swift in Sources */,
+				AA198A792C0A504500A59514 /* ToolbarRightSidebar.swift in Sources */,
 				6C578D8429CD343800DC73B2 /* ExtensionDetailView.swift in Sources */,
 				B607181D2B0C5BE3009CDAB4 /* GitClient+Stash.swift in Sources */,
 				B65B10F22B07D34F002852CF /* GitRemote.swift in Sources */,
@@ -3740,6 +3775,7 @@
 				B6EA1FFD29DB792C001BF195 /* ThemeSettingsColorPreview.swift in Sources */,
 				66AF6CF02BF183CA00D83C9D /* ImageDimensions.swift in Sources */,
 				2806E904297958B9000040F4 /* ContributorRowView.swift in Sources */,
+				AA198A752C0A21FB00A59514 /* UserMenuDropDown.swift in Sources */,
 				3000516A2BBD3A8200A98562 /* ServiceType.swift in Sources */,
 				6C578D8C29CD372700DC73B2 /* ExtensionCommands.swift in Sources */,
 				77A01E272BB4249800F0EA38 /* CEWorkspaceSettingsData.swift in Sources */,

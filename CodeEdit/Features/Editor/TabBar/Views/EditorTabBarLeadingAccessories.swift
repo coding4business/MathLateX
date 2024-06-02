@@ -33,13 +33,6 @@ struct EditorTabBarLeadingAccessories: View {
                 .help("Close this Editor")
                 .disabled(editorManager.isFocusingActiveEditor)
                 .opacity(editorManager.isFocusingActiveEditor ? 0.5 : 1)
-                EditorTabBarAccessoryIcon(
-                    icon: .init(systemName: "person"),
-                    action: { [weak editor] in
-                        guard let editor else { return }
-                        editorManager.closeEditor(editor)
-                    }
-                )
                 .help("User Profile")
                 .disabled(editorManager.isFocusingActiveEditor)
                 .opacity(editorManager.isFocusingActiveEditor ? 0.5 : 1)

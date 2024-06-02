@@ -18,7 +18,7 @@ struct UserAvatarView: View {
     // set the view property of the toolbar item
     HStack {
       userImage
-      VStack(alignment: .leading, spacing: 2) {
+      VStack(alignment: .trailing, spacing: 2) {
         HStack {
           Text(user.name)
             .font(.headline)

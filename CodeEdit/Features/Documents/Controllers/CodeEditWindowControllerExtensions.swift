@@ -1,12 +1,22 @@
-//
+// swiftlint: disable all
 //  CodeEditWindowControllerExtensions.swift
 //  CodeEdit
 //
 //  Created by Austin Condiff on 10/14/23.
 //
 
+import AppKit
 import Combine
+import Foundation
 import SwiftUI
+
+struct InventoryItem: Identifiable {
+  var id: String
+  let partNumber: String
+  let quantity: Int
+
+  let name: String
+}
 
 extension CodeEditWindowController {
   @objc
@@ -19,39 +29,15 @@ extension CodeEditWindowController {
   }
 
   @objc
-  func setMainToolbarPanel() {
-      guard let mainSplitView = splitViewController.splitViewItems.fourth else { return }
-
-      if let toolbar = window?.toolbar,
-         mainSplitView.isCollapsed, !toolbar.items.map(\.itemIdentifier).contains(.itemMainToolbarItem)
-      {
-          window?.toolbar?.insertItem(withItemIdentifier: .itemMainToolbarItem, at: 4)
-      }
-
-      NSAnimationContext.runAnimationGroup { _ in
-          mainSplitView.animator().isCollapsed.toggle()
-      } completionHandler: { [weak self] in
-          if mainSplitView.isCollapsed {
-              self?.window?.animator().toolbar?.removeItem(at: 4)
-          }
-      }
-
-      if let codeEditSplitVC = splitViewController as? CodeEditSplitViewController {
-          codeEditSplitVC.saveInspectorCollapsedState(isCollapsed: mainSplitView.isCollapsed)
-          codeEditSplitVC.hideInspectorToolbarBackground()
-      }
-  }
-
-  @objc
   func toggleLastPanel() {
     guard let lastSplitView = splitViewController.splitViewItems.last else { return }
 
     if let toolbar = window?.toolbar,
-      lastSplitView.isCollapsed, !toolbar.items.map(\.itemIdentifier).contains(.itemListTrackingSeparator)
+      lastSplitView.isCollapsed,
+      !toolbar.items.map(\.itemIdentifier).contains(.itemListTrackingSeparator)
     {
       window?.toolbar?.insertItem(withItemIdentifier: .itemListTrackingSeparator, at: 4)
     }
-
     NSAnimationContext.runAnimationGroup { _ in
       lastSplitView.animator().isCollapsed.toggle()
     } completionHandler: { [weak self] in
@@ -64,6 +50,16 @@ extension CodeEditWindowController {
       codeEditSplitVC.saveInspectorCollapsedState(isCollapsed: lastSplitView.isCollapsed)
       codeEditSplitVC.hideInspectorToolbarBackground()
     }
+  }
+
+  @objc
+    func toggleUserMenuPanel(){
+
+        guard let firstSplitView = splitViewController.splitViewItems.first else { return }
+        firstSplitView.animator().isCollapsed.toggle()
+        if let codeEditSplitVC = splitViewController as? CodeEditSplitViewController {
+            codeEditSplitVC.saveNavigatorCollapsedState(isCollapsed: firstSplitView.isCollapsed)
+        }
   }
 
   /// These are example items that added as commands to command palette
@@ -88,12 +84,13 @@ extension CodeEditWindowController {
       id: "toggle_right_sidebar",
       command: CommandClosureWrapper(closure: { self.toggleLastPanel() })
     )
-      CommandManager.shared.addCommand(
-        name: "Toggle User Profile",
-        title: "Toggle User Profile",
-        id: "toggle_user_profile",
-        command: CommandClosureWrapper(closure: { self.setMainToolbarPanel() })
-      )
+
+    CommandManager.shared.addCommand(
+      name: "Toggle User Menu",
+      title: "Toggle User Menu",
+      id: "toggle_user_menu",
+      command: CommandClosureWrapper(closure: { self.toggleUserMenuPanel() })
+    )
   }
 
   // Listen to changes in all tabs/files
@@ -178,7 +175,8 @@ extension NSToolbarItem.Identifier {
   static let branchPicker: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BranchPicker")
   static let toggleFirstSidebarItem1: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
     "ToggleFirstSidebarItem")
-  static let itemMainToolbarItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
-    "itemMainToolbarItem")
+  static let toggleUserMenu: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
+    "ToggleUserMenu")
 
 }
+// swiftlint: enable all

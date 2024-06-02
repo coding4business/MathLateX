@@ -19,7 +19,7 @@ extension CodeEditWindowController {
     if Settings[\.general].tabBarStyle == .native {
       // Set titlebar background as transparent by default in order to
       // style the toolbar background in native tab bar style.
-      self.window?.titlebarSeparatorStyle = .none
+      self.window?.titlebarSeparatorStyle = .shadow
     } else {
       // In Xcode tab bar style, we use default toolbar background with
       // line separator.
@@ -37,7 +37,7 @@ extension CodeEditWindowController {
       .itemListTrackingSeparator,
       .flexibleSpace,
       .toggleLastSidebarItem,
-      .itemMainToolbarItem,
+      .toggleUserMenu
     ]
   }
 
@@ -49,7 +49,7 @@ extension CodeEditWindowController {
       .itemListTrackingSeparator,
       .toggleLastSidebarItem,
       .branchPicker,
-      .itemMainToolbarItem,
+      .toggleUserMenu
     ]
   }
 
@@ -98,20 +98,6 @@ extension CodeEditWindowController {
       toolbarItem.target = self
       toolbarItem.action = #selector(self.toggleFirstPanel)
       return toolbarItem
-    case .itemMainToolbarItem:
-      let toolbarItem = NSToolbarItem(
-        itemIdentifier: NSToolbarItem.Identifier.itemMainToolbarItem)
-      toolbarItem.image = NSImage(
-        systemSymbolName: "person.circle",
-        accessibilityDescription: nil
-      )?.withSymbolConfiguration(.init(scale: .large))
-      toolbarItem.label = "Navigator Sidebar"
-      toolbarItem.paletteLabel = " Navigator Sidebar"
-      toolbarItem.toolTip = "Hide or show the Navigator"
-      toolbarItem.isBordered = true
-      toolbarItem.target = self
-      toolbarItem.action = #selector(self.setMainToolbarPanel)
-      return toolbarItem
     case .toggleLastSidebarItem:
       let toolbarItem = NSToolbarItem(
         itemIdentifier: NSToolbarItem.Identifier.toggleLastSidebarItem)
@@ -122,31 +108,32 @@ extension CodeEditWindowController {
       toolbarItem.target = self
       toolbarItem.action = #selector(self.toggleLastPanel)
       toolbarItem.image = NSImage(
-        systemSymbolName: "cloud",
-        accessibilityDescription: nil
-      )?.withSymbolConfiguration(.init(scale: .large))
-      toolbarItem.image = NSImage(
-        systemSymbolName: "gear",
-        accessibilityDescription: nil
-      )?.withSymbolConfiguration(.init(scale: .large))
-      toolbarItem.image = NSImage(
-        systemSymbolName: "pencil",
-        accessibilityDescription: nil
-      )?.withSymbolConfiguration(.init(scale: .large))
-      toolbarItem.image = NSImage(
         systemSymbolName: "sidebar.trailing",
+        accessibilityDescription: nil
+      )?.withSymbolConfiguration(.init(scale: .large))
+      return toolbarItem
+    case .toggleUserMenu:
+      let toolbarItem = NSToolbarItem(
+        itemIdentifier: NSToolbarItem.Identifier.toggleUserMenu)
+      toolbarItem.label = "Inspector Sidebar"
+      toolbarItem.paletteLabel = "Inspector Sidebar"
+      toolbarItem.toolTip = "Hide or show the Inspectors"
+      toolbarItem.isBordered = true
+      toolbarItem.target = self
+            toolbarItem.action = #selector(self.toggleUserMenuPanel)
+      toolbarItem.image = NSImage(
+        systemSymbolName: "person.fill",
         accessibilityDescription: nil
       )?.withSymbolConfiguration(.init(scale: .large))
       return toolbarItem
     case .branchPicker:
       let toolbarItem = NSToolbarItem(itemIdentifier: .branchPicker)
-      let view = NSHostingView(
+            let hostingView = NSHostingView(
         rootView: ToolbarBranchPicker(
           workspaceFileManager: workspace?.workspaceFileManager
         )
       )
-      toolbarItem.view = view
-
+      toolbarItem.view = hostingView
       return toolbarItem
     default:
       return NSToolbarItem(itemIdentifier: itemIdentifier)
