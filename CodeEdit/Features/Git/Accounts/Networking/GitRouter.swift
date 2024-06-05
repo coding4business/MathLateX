@@ -11,372 +11,389 @@ import Foundation
 
 // TODO: DOCS (Nanashi Li)
 enum GitHTTPMethod: String {
-    case GET, POST, PUT, PATCH, DELETE
+  case GET, POST, PUT, PATCH, DELETE
 }
 
 enum GitHTTPEncoding: Int {
-    case url, form, json
+  case url, form, json
 }
 
 struct GitHTTPHeader {
-    var headerField: String
-    var value: String
+  var headerField: String
+  var value: String
 }
 
 protocol GitRouterConfiguration {
-    var apiEndpoint: String? { get }
-    var accessToken: String? { get }
-    var accessTokenFieldName: String? { get }
-    var authorizationHeader: String? { get }
-    var errorDomain: String? { get }
-    var customHeaders: [GitHTTPHeader]? { get }
+  var apiEndpoint: String? { get }
+  /// <#Description#>
+  var accessToken: String? { get }
+  var accessTokenFieldName: String? { get }
+  var authorizationHeader: String? { get }
+  var errorDomain: String? { get }
+  var customHeaders: [GitHTTPHeader]? { get }
 }
 
 extension GitRouterConfiguration {
-    var accessTokenFieldName: String? {
-        "access_token"
-    }
+  var accessTokenFieldName: String? {
+    "access_token"
+  }
 
-    var authorizationHeader: String? {
-        nil
-    }
+  var authorizationHeader: String? {
+    nil
+  }
 
-    var errorDomain: String? {
-        "com.codeedit.models.accounts.networking"
-    }
+  var errorDomain: String? {
+    "com.codeedit.models.accounts.networking"
+  }
 
-    var customHeaders: [GitHTTPHeader]? {
-        nil
-    }
+  var customHeaders: [GitHTTPHeader]? {
+    nil
+  }
 }
 
+/// <#Description#>
 protocol GitRouter {
-    var method: GitHTTPMethod { get }
-    var path: String { get }
-    var encoding: GitHTTPEncoding { get }
-    var params: [String: Any] { get }
-    var configuration: GitRouterConfiguration? { get }
+  var method: GitHTTPMethod { get }
+  var path: String { get }
+  var encoding: GitHTTPEncoding { get }
+  var params: [String: Any] { get }
+  var configuration: GitRouterConfiguration? { get }
 
-    func urlQuery(_ parameters: [String: Any]) -> [URLQueryItem]?
+  func urlQuery(_ parameters: [String: Any]) -> [URLQueryItem]?
 
-    func request(_ urlComponents: URLComponents, parameters: [String: Any]) -> URLRequest?
+  func request(_ urlComponents: URLComponents, parameters: [String: Any]) -> URLRequest?
 
-    func loadJSON<T: Codable>(
-        _ session: GitURLSession,
-        expectedResultType: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol?
+  /// Description
+  /// - Parameters:
+  ///   - session: session description
+  ///   - expectedResultType: expectedResultType description
+  ///   - completion: completion description
+  /// - Returns: description
+  func loadJSON<T: Codable>(
+    _ session: GitURLSession,
+    expectedResultType: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol?
 
-    func load<T: Codable>(
-        _ session: GitURLSession,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
-        expectedResultType: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol?
+  func load<T: Codable>(
+    _ session: GitURLSession,
+    dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
+    expectedResultType: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol?
 
-    func load<T: Codable>(
-        _ session: GitURLSession,
-        decoder: JSONDecoder,
-        expectedResultType: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol?
+  func load<T: Codable>(
+    _ session: GitURLSession,
+    decoder: JSONDecoder,
+    expectedResultType: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol?
 
-    func request() -> URLRequest?
+  func request() -> URLRequest?
 }
 
 extension GitRouter {
 
-    var gitErrorKey: String { "ErrorKey" }
+  var gitErrorKey: String { "ErrorKey" }
 
-    func request() -> URLRequest? {
-        let url = URL(string: path, relativeTo: URL(string: configuration?.apiEndpoint ?? "")!)
+  func request() -> URLRequest? {
+    let url = URL(string: path, relativeTo: URL(string: configuration?.apiEndpoint ?? "")!)
 
-        var parameters = encoding == .json ? [:] : params
+    var parameters = encoding == .json ? [:] : params
 
-        if let accessToken = configuration?.accessToken, configuration?.authorizationHeader == nil {
-            parameters[configuration?.accessTokenFieldName ?? ""] = accessToken as Any?
-        }
-
-        let components = URLComponents(url: url!, resolvingAgainstBaseURL: true)
-
-        var urlRequest = request(components!, parameters: parameters)
-
-        if let accessToken = configuration?.accessToken, let tokenType = configuration?.authorizationHeader {
-            urlRequest?.addValue("\(tokenType) \(accessToken)", forHTTPHeaderField: "Authorization")
-        }
-
-        if let customHeaders = configuration?.customHeaders {
-            customHeaders.forEach { httpHeader in
-                urlRequest?.addValue(httpHeader.value, forHTTPHeaderField: httpHeader.headerField)
-            }
-        }
-
-        return urlRequest
+    if let accessToken = configuration?.accessToken, configuration?.authorizationHeader == nil {
+      parameters[configuration?.accessTokenFieldName ?? ""] = accessToken as Any?
     }
 
-    /// Due to the complexity of the the urlQuery method we disabled lint for the this method
-    /// only so that it doesn't complain... Note this level of complexity is needed to give us as
-    /// much success rate as possible due to all git providers having different types of url schemes.
-    func urlQuery(_ parameters: [String: Any]) -> [URLQueryItem]? { // swiftlint:disable:this cyclomatic_complexity
-        guard !parameters.isEmpty else { return nil }
+    let components = URLComponents(url: url!, resolvingAgainstBaseURL: true)
 
-        var components: [URLQueryItem] = []
+    var urlRequest = request(components!, parameters: parameters)
 
-        for key in parameters.keys.sorted(by: <) {
-            guard let value = parameters[key] else { continue }
-
-            switch value {
-            case let value as String:
-                if let escapedValue = value.addingPercentEncoding(
-                    withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
-                ) {
-                    components.append(URLQueryItem(name: key, value: escapedValue))
-                }
-            case let valueArray as [String]:
-                for (index, item) in valueArray.enumerated() {
-                    if let escapedValue = item.addingPercentEncoding(
-                        withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
-                    ) {
-                        components.append(URLQueryItem(name: "\(key)[\(index)]", value: escapedValue))
-                    }
-                }
-            case let valueDict as [String: Any]:
-                for nestedKey in valueDict.keys.sorted(by: <) {
-                    guard let value = valueDict[nestedKey] as? String else { continue }
-                    if let escapedValue = value.addingPercentEncoding(
-                        withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
-                    ) {
-                        components.append(URLQueryItem(name: "\(key)[\(nestedKey)]", value: escapedValue))
-                    }
-                }
-            default:
-                print("Cannot encode object of type \(type(of: value))")
-            }
-        }
-
-        return components
+    if let accessToken = configuration?.accessToken,
+      let tokenType = configuration?.authorizationHeader
+    {
+      urlRequest?.addValue("\(tokenType) \(accessToken)", forHTTPHeaderField: "Authorization")
     }
 
-    func request(_ urlComponents: URLComponents, parameters: [String: Any]) -> URLRequest? {
-
-        var urlComponents = urlComponents
-
-        urlComponents.percentEncodedQuery = urlQuery(parameters)?.map {
-            [$0.name, $0.value ?? ""].joined(separator: "=")
-        }.joined(separator: "&")
-
-        guard let url = urlComponents.url else { return nil }
-
-        switch encoding {
-        case .url, .json:
-            var mutableURLRequest = Foundation.URLRequest(url: url)
-
-            mutableURLRequest.httpMethod = method.rawValue
-
-            return mutableURLRequest
-        case .form:
-            let queryData = urlComponents.percentEncodedQuery?.data(using: String.Encoding.utf8)
-
-            // clear the query items as they go into the body
-            urlComponents.queryItems = nil
-
-            var mutableURLRequest = Foundation.URLRequest(url: urlComponents.url!)
-
-            mutableURLRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
-
-            mutableURLRequest.httpBody = queryData
-
-            mutableURLRequest.httpMethod = method.rawValue
-
-            return mutableURLRequest as URLRequest
-        }
+    if let customHeaders = configuration?.customHeaders {
+      customHeaders.forEach { httpHeader in
+        urlRequest?.addValue(httpHeader.value, forHTTPHeaderField: httpHeader.headerField)
+      }
     }
 
-    @available(*, deprecated, message: "Plase use `load` method instead")
-    func loadJSON<T: Codable>(
-        _ session: GitURLSession = URLSession.shared,
-        expectedResultType: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol? {
-        load(session, expectedResultType: expectedResultType, completion: completion)
+    return urlRequest
+  }
+
+  /// Due to the complexity of the the urlQuery method we disabled lint for the this method
+  /// only so that it doesn't complain... Note this level of complexity is needed to give us as
+  /// much success rate as possible due to all git providers having different types of url schemes.
+  func urlQuery(_ parameters: [String: Any]) -> [URLQueryItem]? {  // swiftlint:disable:this cyclomatic_complexity
+    guard !parameters.isEmpty else { return nil }
+
+    var components: [URLQueryItem] = []
+
+    for key in parameters.keys.sorted(by: <) {
+      guard let value = parameters[key] else { continue }
+
+      switch value {
+      case let value as String:
+        if let escapedValue = value.addingPercentEncoding(
+          withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
+        ) {
+          components.append(URLQueryItem(name: key, value: escapedValue))
+        }
+      case let valueArray as [String]:
+        for (index, item) in valueArray.enumerated() {
+          if let escapedValue = item.addingPercentEncoding(
+            withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
+          ) {
+            components.append(URLQueryItem(name: "\(key)[\(index)]", value: escapedValue))
+          }
+        }
+      case let valueDict as [String: Any]:
+        for nestedKey in valueDict.keys.sorted(by: <) {
+          guard let value = valueDict[nestedKey] as? String else { continue }
+          if let escapedValue = value.addingPercentEncoding(
+            withAllowedCharacters: CharacterSet.URLQueryAllowedCharacterSet()
+          ) {
+            components.append(URLQueryItem(name: "\(key)[\(nestedKey)]", value: escapedValue))
+          }
+        }
+      default:
+        print("Cannot encode object of type \(type(of: value))")
+      }
     }
 
-    func load<T: Codable>(
-        _ session: GitURLSession = URLSession.shared,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
-        expectedResultType: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol? {
+    return components
+  }
 
-        let decoder = JSONDecoder()
+  func request(_ urlComponents: URLComponents, parameters: [String: Any]) -> URLRequest? {
 
-        if let dateDecodingStrategy {
-            decoder.dateDecodingStrategy = dateDecodingStrategy
-        }
+    var urlComponents = urlComponents
 
-        return load(session, decoder: decoder, expectedResultType: expectedResultType, completion: completion)
+    urlComponents.percentEncodedQuery = urlQuery(parameters)?.map {
+      [$0.name, $0.value ?? ""].joined(separator: "=")
+    }.joined(separator: "&")
+
+    guard let url = urlComponents.url else { return nil }
+
+    switch encoding {
+    case .url, .json:
+      var mutableURLRequest = Foundation.URLRequest(url: url)
+
+      mutableURLRequest.httpMethod = method.rawValue
+
+      return mutableURLRequest
+    case .form:
+      let queryData = urlComponents.percentEncodedQuery?.data(using: String.Encoding.utf8)
+
+      // clear the query items as they go into the body
+      urlComponents.queryItems = nil
+
+      var mutableURLRequest = Foundation.URLRequest(url: urlComponents.url!)
+
+      mutableURLRequest.setValue(
+        "application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
+
+      mutableURLRequest.httpBody = queryData
+
+      mutableURLRequest.httpMethod = method.rawValue
+
+      return mutableURLRequest as URLRequest
+    }
+  }
+
+  @available(*, deprecated, message: "Plase use `load` method instead")
+  func loadJSON<T: Codable>(
+    _ session: GitURLSession = URLSession.shared,
+    expectedResultType: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol? {
+    load(session, expectedResultType: expectedResultType, completion: completion)
+  }
+
+  func load<T: Codable>(
+    _ session: GitURLSession = URLSession.shared,
+    dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
+    expectedResultType: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol? {
+
+    let decoder = JSONDecoder()
+
+    if let dateDecodingStrategy {
+      decoder.dateDecodingStrategy = dateDecodingStrategy
     }
 
-    func load<T: Codable>(
-        _ session: GitURLSession = URLSession.shared,
-        decoder: JSONDecoder = JSONDecoder(), expectedResultType _: T.Type,
-        completion: @escaping (_ json: T?, _ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol? {
+    return load(
+      session, decoder: decoder, expectedResultType: expectedResultType, completion: completion)
+  }
 
-        guard let request = request() else {
-            return nil
-        }
+  func load<T: Codable>(
+    _ session: GitURLSession = URLSession.shared,
+    decoder: JSONDecoder = JSONDecoder(), expectedResultType _: T.Type,
+    completion: @escaping (_ json: T?, _ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol? {
 
-        let task = session.dataTask(with: request) { data, response, err in
-            if let response = response as? HTTPURLResponse {
-                if response.wasSuccessful == false {
-                    var userInfo = [String: Any]()
-                    if let data, let json = try? JSONSerialization.jsonObject(
-                        with: data,
-                        options: .mutableContainers
-                    ) as? [String: Any] {
-
-                        userInfo[gitErrorKey] = json as Any?
-                    }
-
-                    let error = NSError(
-                        domain: self.configuration?.errorDomain ?? "",
-                        code: response.statusCode,
-                        userInfo: userInfo
-                    )
-
-                    completion(nil, error)
-
-                    return
-                }
-            }
-
-            if let err {
-                completion(nil, err)
-            } else {
-                if let data {
-                    do {
-                        let decoded = try decoder.decode(T.self, from: data)
-                        completion(decoded, nil)
-                    } catch {
-                        completion(nil, error)
-                    }
-                }
-            }
-        }
-        task.resume()
-        return task
+    guard let request = request() else {
+      return nil
     }
 
-    @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-    func load<T: Codable>(
-        _ session: GitURLSession = URLSession.shared,
-        decoder: JSONDecoder = JSONDecoder(),
-        expectedResultType _: T.Type
-    ) async throws -> T {
+    let task = session.dataTask(with: request) { data, response, err in
+      if let response = response as? HTTPURLResponse {
+        if response.wasSuccessful == false {
+          var userInfo = [String: Any]()
+          if let data,
+            let json = try? JSONSerialization.jsonObject(
+              with: data,
+              options: .mutableContainers
+            ) as? [String: Any]
+          {
 
-        guard let request = request() else {
-            throw NSError(domain: configuration?.errorDomain ?? "", code: -876, userInfo: nil)
+            userInfo[gitErrorKey] = json as Any?
+          }
+
+          let error = NSError(
+            domain: self.configuration?.errorDomain ?? "",
+            code: response.statusCode,
+            userInfo: userInfo
+          )
+
+          completion(nil, error)
+
+          return
         }
+      }
 
-        let responseTuple = try await session.data(for: request, delegate: nil)
-
-        if let response = responseTuple.1 as? HTTPURLResponse {
-            if response.wasSuccessful == false {
-                var userInfo = [String: Any]()
-                if let json = try? JSONSerialization.jsonObject(
-                    with: responseTuple.0,
-                    options: .mutableContainers
-                ) as? [String: Any] {
-
-                    userInfo[gitErrorKey] = json as Any?
-
-                }
-
-                throw NSError(domain: configuration?.errorDomain ?? "", code: response.statusCode, userInfo: userInfo)
-            }
+      if let err {
+        completion(nil, err)
+      } else {
+        if let data {
+          do {
+            let decoded = try decoder.decode(T.self, from: data)
+            completion(decoded, nil)
+          } catch {
+            completion(nil, error)
+          }
         }
+      }
+    }
+    task.resume()
+    return task
+  }
 
-        return try decoder.decode(T.self, from: responseTuple.0)
+  @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+  func load<T: Codable>(
+    _ session: GitURLSession = URLSession.shared,
+    decoder: JSONDecoder = JSONDecoder(),
+    expectedResultType _: T.Type
+  ) async throws -> T {
+
+    guard let request = request() else {
+      throw NSError(domain: configuration?.errorDomain ?? "", code: -876, userInfo: nil)
     }
 
-    @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-    func load<T: Codable>(
-        _ session: GitURLSession = URLSession.shared,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
-        expectedResultType: T.Type
-    ) async throws -> T {
+    let responseTuple = try await session.data(for: request, delegate: nil)
 
-        let decoder = JSONDecoder()
+    if let response = responseTuple.1 as? HTTPURLResponse {
+      if response.wasSuccessful == false {
+        var userInfo = [String: Any]()
+        if let json = try? JSONSerialization.jsonObject(
+          with: responseTuple.0,
+          options: .mutableContainers
+        ) as? [String: Any] {
 
-        if let dateDecodingStrategy {
-            decoder.dateDecodingStrategy = dateDecodingStrategy
+          userInfo[gitErrorKey] = json as Any?
+
         }
 
-        return try await load(session, decoder: decoder, expectedResultType: expectedResultType)
+        throw NSError(
+          domain: configuration?.errorDomain ?? "", code: response.statusCode, userInfo: userInfo)
+      }
     }
 
-    func load(
-        _ session: GitURLSession = URLSession.shared,
-        completion: @escaping (_ error: Error?) -> Void
-    ) -> GitURLSessionDataTaskProtocol? {
+    return try decoder.decode(T.self, from: responseTuple.0)
+  }
 
-        guard let request = request() else {
-            return nil
-        }
+  @available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
+  func load<T: Codable>(
+    _ session: GitURLSession = URLSession.shared,
+    dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?,
+    expectedResultType: T.Type
+  ) async throws -> T {
 
-        let task = session.dataTask(with: request) { data, response, err in
-            if let response = response as? HTTPURLResponse {
-                if response.wasSuccessful == false {
-                    var userInfo = [String: Any]()
-                    if let data, let json = try? JSONSerialization.jsonObject(
-                        with: data,
-                        options: .mutableContainers
-                    ) as? [String: Any] {
+    let decoder = JSONDecoder()
 
-                        userInfo[gitErrorKey] = json as Any?
-
-                    }
-
-                    let error = NSError(
-                        domain: self.configuration?.errorDomain ?? "",
-                        code: response.statusCode,
-                        userInfo: userInfo
-                    )
-
-                    completion(error)
-
-                    return
-                }
-            }
-
-            completion(err)
-        }
-        task.resume()
-        return task
+    if let dateDecodingStrategy {
+      decoder.dateDecodingStrategy = dateDecodingStrategy
     }
+
+    return try await load(session, decoder: decoder, expectedResultType: expectedResultType)
+  }
+
+  func load(
+    _ session: GitURLSession = URLSession.shared,
+    completion: @escaping (_ error: Error?) -> Void
+  ) -> GitURLSessionDataTaskProtocol? {
+
+    guard let request = request() else {
+      return nil
+    }
+
+    let task = session.dataTask(with: request) { data, response, err in
+      if let response = response as? HTTPURLResponse {
+        if response.wasSuccessful == false {
+          var userInfo = [String: Any]()
+          if let data,
+            let json = try? JSONSerialization.jsonObject(
+              with: data,
+              options: .mutableContainers
+            ) as? [String: Any]
+          {
+
+            userInfo[gitErrorKey] = json as Any?
+
+          }
+
+          let error = NSError(
+            domain: self.configuration?.errorDomain ?? "",
+            code: response.statusCode,
+            userInfo: userInfo
+          )
+
+          completion(error)
+
+          return
+        }
+      }
+
+      completion(err)
+    }
+    task.resume()
+    return task
+  }
 }
 
-private extension CharacterSet {
+extension CharacterSet {
 
-    /// https://github.com/Alamofire/Alamofire/blob/3.5rameterEncoding.swift#L220-L225
-    static func URLQueryAllowedCharacterSet() -> CharacterSet {
+  /// https://github.com/Alamofire/Alamofire/blob/3.5rameterEncoding.swift#L220-L225
+  fileprivate static func URLQueryAllowedCharacterSet() -> CharacterSet {
 
-        // does not include "?" or "/" due to RFC 3986 - Section 3.4
-        let generalDelimitersToEncode = ":#[]@"
-        let subDelimitersToEncode = "!$&'()*+,;="
+    // does not include "?" or "/" due to RFC 3986 - Section 3.4
+    let generalDelimitersToEncode = ":#[]@"
+    let subDelimitersToEncode = "!$&'()*+,;="
 
-        var allowedCharacterSet = CharacterSet.urlQueryAllowed
-        allowedCharacterSet.remove(charactersIn: generalDelimitersToEncode + subDelimitersToEncode)
-        return allowedCharacterSet
-    }
+    var allowedCharacterSet = CharacterSet.urlQueryAllowed
+    allowedCharacterSet.remove(charactersIn: generalDelimitersToEncode + subDelimitersToEncode)
+    return allowedCharacterSet
+  }
 }
 
 extension HTTPURLResponse {
 
-    /// Checks what kind of HTTP response we get from the server
-    var wasSuccessful: Bool {
-        let successRange = 200 ..< 300
-        return successRange.contains(statusCode)
-    }
+  /// Checks what kind of HTTP response we get from the server
+  var wasSuccessful: Bool {
+    let successRange = 200..<300
+    return successRange.contains(statusCode)
+  }
 }

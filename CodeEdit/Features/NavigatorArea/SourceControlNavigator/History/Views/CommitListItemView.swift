@@ -63,7 +63,7 @@ struct CommitListItemView: View {
     var body: some View {
         HStack(alignment: .top) {
             if width > 360 {
-                AsyncImage(url: URL(string: "https://www.gravatar.com/avatar/\(generateAvatarHash())")) { phase in
+                SwiftUI.AsyncImage(url: URL(string: "https://www.gravatar.com/avatar/\(generateAvatarHash())")) { phase in
                     if let image = phase.image {
                         image
                             .resizable()

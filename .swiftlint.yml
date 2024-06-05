@@ -2,6 +2,7 @@ disabled_rules:
   - todo
   - trailing_comma
   - nesting
+  - identifier_name
   - function_body_length
 
 type_name:
@@ -9,14 +10,20 @@ type_name:
     - ID
 
 identifier_name:
+  min_length: 2
+  allowed_symbols: ['_', '$', '@']
   excluded:
+    - c
     - id
     - vc
 
 # paths to ignore during linting.
 excluded:
   - CodeEditModules/.build # Where Swift Package Manager checks out dependency sources
-  - DerivedData  
+  - DerivedData
+  - CodeEdit/build
+  - Tests
+  - .build
 
 opt_in_rules:
   - attributes
@@ -24,12 +31,12 @@ opt_in_rules:
   - closure_spacing
   - contains_over_first_not_nil
   - missing_docs
-#  - implicit_return
+  - implicit_return
   - modifier_order
   - convenience_type
   - pattern_matching_keywords
-  - multiline_parameters_brackets
-  - multiline_arguments_brackets
+  #- multiline_parameters_brackets
+  #- multiline_arguments_brackets
 
 custom_rules:
   spaces_over_tabs:

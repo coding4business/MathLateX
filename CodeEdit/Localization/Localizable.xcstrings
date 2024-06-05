@@ -1,0 +1,1691 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " (less secure)" : {
+
+    },
+    "'codeedit' Shell Command" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'mathlatex' Commando Terminale"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ × %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ × %2$@"
+          }
+        }
+      }
+    },
+    "%@ Inspector" : {
+
+    },
+    "%@ Navigator" : {
+
+    },
+    "%@ Path Bar" : {
+
+    },
+    "%@ personal access tokens must have these scopes set:" : {
+
+    },
+    "%@ Settings" : {
+
+    },
+    "%@ Toolbar" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Toolbar"
+          }
+        }
+      }
+    },
+    "%@ Utility Area" : {
+
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld results in %lld files" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld results in %2$lld files"
+          }
+        }
+      }
+    },
+    "%lld selected" : {
+
+    },
+    "%lld Spaces" : {
+
+    },
+    "1. Open the attached sample project" : {
+
+    },
+    "2. type #import and wait for autocompletion to begin" : {
+
+    },
+    "A GitHub account is required to submit feedback." : {
+
+    },
+    "AB" : {
+
+    },
+    "About CodeEdit" : {
+
+    },
+    "Account" : {
+
+    },
+    "Acknowledgements" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add a language server" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Lingua"
+          }
+        }
+      }
+    },
+    "Add Account" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Account"
+          }
+        }
+      }
+    },
+    "Add Account..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi Account"
+          }
+        }
+      }
+    },
+    "Add and remove files automatically" : {
+
+    },
+    "Add Existing Remote..." : {
+
+    },
+    "Add File" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiungi File"
+          }
+        }
+      }
+    },
+    "Add Folder" : {
+
+    },
+    "Add Remote" : {
+
+    },
+    "Add Task..." : {
+
+    },
+    "admin:public _key" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "admin:public _key"
+          }
+        }
+      }
+    },
+    "After the last window is closed" : {
+
+    },
+    "All Sources" : {
+
+    },
+    "All uncommited changes will be preserved on the renamed branch." : {
+
+    },
+    "Alphabetically" : {
+
+    },
+    "Always use dark terminal appearance" : {
+
+    },
+    "Amend" : {
+
+    },
+    "Appearance" : {
+
+    },
+    "Application Support" : {
+
+    },
+    "Apply" : {
+
+    },
+    "Apply and Delete" : {
+
+    },
+    "Apply Stashed Changes..." : {
+
+    },
+    "Applying the stashed changes will restore modifications to files in your local repository." : {
+
+    },
+    "Are you sure you want to delete the account “%@”?" : {
+
+    },
+    "Author Email" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email Autore"
+          }
+        }
+      }
+    },
+    "Author Name" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome Autore"
+          }
+        }
+      }
+    },
+    "Autocomplete braces" : {
+
+    },
+    "Automatically change theme based on system appearance" : {
+
+    },
+    "Automatically check for app updates" : {
+
+    },
+    "Automatically insert closing braces (\"}\")" : {
+
+    },
+    "Automatically reveal in project navigator" : {
+
+    },
+    "Automatically save changes to disk" : {
+
+    },
+    "Bar" : {
+
+    },
+    "Bash" : {
+
+    },
+    "Basic Information" : {
+
+    },
+    "Blink Cursor" : {
+
+    },
+    "Block" : {
+
+    },
+    "Bordered" : {
+
+    },
+    "Bracket Pair Highlight" : {
+
+    },
+    "Cancel" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella"
+          }
+        }
+      }
+    },
+    "Cancel Cloning" : {
+
+    },
+    "Cannot Discard Changes" : {
+
+    },
+    "Cannot preview image" : {
+
+    },
+    "Cannot retrieve URL to the file you opened." : {
+
+    },
+    "Cannot Stash Changes" : {
+
+    },
+    "Check for updates" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica Aggiornamenti"
+          }
+        }
+      }
+    },
+    "Check for updates..." : {
+
+    },
+    "Check Now" : {
+
+    },
+    "Check Out %@..." : {
+
+    },
+    "Checkout" : {
+
+    },
+    "Checkout branch" : {
+
+    },
+    "Cherry-Pick %@..." : {
+
+    },
+    "Choose..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli"
+          }
+        }
+      }
+    },
+    "Clone" : {
+
+    },
+    "Clone a repository" : {
+
+    },
+    "Clone Git Repository..." : {
+
+    },
+    "Clone Using" : {
+
+    },
+    "Close" : {
+
+    },
+    "Close All" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi Tutto"
+          }
+        }
+      }
+    },
+    "Close Editor" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi Editor"
+          }
+        }
+      }
+    },
+    "Close Other Tabs" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi gli altri Tabs"
+          }
+        }
+      }
+    },
+    "Close Overlay" : {
+
+    },
+    "Close Tab" : {
+
+    },
+    "Close Tabs to the Right" : {
+
+    },
+    "Close Terminal" : {
+
+    },
+    "Close this Editor" : {
+
+    },
+    "Close Window" : {
+
+    },
+    "Close Workspace" : {
+
+    },
+    "CodeEdit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MathLateX"
+          }
+        }
+      }
+    },
+    "Color" : {
+
+    },
+    "Commit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commit"
+          }
+        }
+      }
+    },
+    "Commit and Push..." : {
+
+    },
+    "Commit Details" : {
+
+    },
+    "Committing..." : {
+
+    },
+    "Comparison view" : {
+
+    },
+    "Confirm Passphrase" : {
+
+    },
+    "Contributors" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collaboratori"
+          }
+        }
+      }
+    },
+    "Copy Commit Message" : {
+
+    },
+    "Copy Identifier" : {
+
+    },
+    "Copy Path" : {
+
+    },
+    "Copy path%@" : {
+
+    },
+    "Copy Relative Path" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copia Path Relativo"
+          }
+        }
+      }
+    },
+    "Copy System Information to Clipboard" : {
+
+    },
+    "Could not find file" : {
+      "comment" : "Could not find file"
+    },
+    "Create" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea"
+          }
+        }
+      }
+    },
+    "Create a new branch" : {
+
+    },
+    "Create a Password on %@" : {
+
+    },
+    "Create a Token on %@" : {
+
+    },
+    "Create New File..." : {
+
+    },
+    "Create New..." : {
+
+    },
+    "Create SSH key" : {
+
+    },
+    "Customize Toolbar..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizza la Toolbar"
+          }
+        }
+      }
+    },
+    "Dark" : {
+
+    },
+    "Decrease" : {
+
+    },
+    "Default" : {
+
+    },
+    "Default - Detected" : {
+
+    },
+    "Default branch name" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete Account..." : {
+
+    },
+    "Delete..." : {
+
+    },
+    "Deleting this account will remove it from CodeEdit." : {
+
+    },
+    "Description" : {
+
+    },
+    "Detailed description" : {
+
+    },
+    "Details..." : {
+
+    },
+    "Dialog Warnings" : {
+
+    },
+    "Dim editors without focus" : {
+
+    },
+    "Disabled" : {
+
+    },
+    "Discard All Changes..." : {
+
+    },
+    "Discard Changes in %@..." : {
+
+    },
+    "Do nothing" : {
+
+    },
+    "Do you want to apply stashed changes?" : {
+
+    },
+    "Do you want to delete the branch “%@”?" : {
+
+    },
+    "Do you want to delete the remote “%@”?" : {
+
+    },
+    "Do you want to delete the stash “%@”?" : {
+
+    },
+    "Done" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Email %@..." : {
+
+    },
+    "Enable source control" : {
+
+    },
+    "Enable type-over completion" : {
+
+    },
+    "Enter a git repository URL:" : {
+
+    },
+    "Environment Variables" : {
+
+    },
+    "Example:" : {
+
+    },
+    "Example: CodeEdit crashes when the autocomplete popup appears on screen." : {
+
+    },
+    "Example: CodeEdit crashes when using autocomplete" : {
+
+    },
+    "Example: I expected autocomplete to show me a list of headers." : {
+
+    },
+    "Example: The autocomplete window flickered on screen and CodeEdit crashed. See attached crashlog." : {
+
+    },
+    "Exclude" : {
+
+    },
+    "Extension Settings" : {
+
+    },
+    "Extensions" : {
+
+    },
+    "Failed to get document" : {
+      "comment" : "Failed to get document"
+    },
+    "Failed to submit feedback" : {
+
+    },
+    "Features" : {
+
+    },
+    "Feedback submitted" : {
+
+    },
+    "Fetch and refresh server status automatically" : {
+
+    },
+    "File Extensions" : {
+
+    },
+    "File Icon Style" : {
+
+    },
+    "Filter Changes Navigator" : {
+
+    },
+    "Find" : {
+
+    },
+    "Find and Replace..." : {
+
+    },
+    "Find Navigator Detail" : {
+
+    },
+    "Find Next" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova Prossimo"
+          }
+        }
+      }
+    },
+    "Find Previous" : {
+
+    },
+    "Find..." : {
+
+    },
+    "Flash" : {
+
+    },
+    "Focus this Editor" : {
+
+    },
+    "Folders on top" : {
+
+    },
+    "Font Size" : {
+
+    },
+    "From" : {
+
+    },
+    "General" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generale"
+          }
+        }
+      }
+    },
+    "Git" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Git"
+          }
+        }
+      }
+    },
+    "Git Repository URL" : {
+
+    },
+    "Go Back" : {
+
+    },
+    "Go Forward" : {
+
+    },
+    "Hide all" : {
+
+    },
+    "Hide only" : {
+
+    },
+    "Hide the Utility area" : {
+
+    },
+    "History Editor Help" : {
+
+    },
+    "HTTPS" : {
+
+    },
+    "https://git.example.com" : {
+
+    },
+    "I want to print" : {
+
+    },
+    "Identity and Type" : {
+
+    },
+    "Implementation Needed" : {
+
+    },
+    "Include pre-release versions" : {
+
+    },
+    "Include upstream changes" : {
+
+    },
+    "Increase" : {
+
+    },
+    "Indent" : {
+
+    },
+    "Indent using" : {
+
+    },
+    "Indent Width" : {
+
+    },
+    "Indexing %lld%%" : {
+
+    },
+    "Indexing current workspace files for search. Searches performed while indexing may return incomplete results." : {
+
+    },
+    "Initialize" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizializza"
+          }
+        }
+      }
+    },
+    "Inspector Tab Bar Position" : {
+
+    },
+    "Install" : {
+
+    },
+    "Issue Navigator Detail" : {
+
+    },
+    "Jump to Selection" : {
+
+    },
+    "Keep Open" : {
+
+    },
+    "Key Type" : {
+
+    },
+    "Kill Terminal" : {
+
+    },
+    "Large" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grande"
+          }
+        }
+      }
+    },
+    "Last checked: %@" : {
+
+    },
+    "Letter Spacing" : {
+
+    },
+    "LF" : {
+
+    },
+    "Light" : {
+
+    },
+    "Line Height" : {
+
+    },
+    "Loading ..." : {
+
+    },
+    "Loading History" : {
+
+    },
+    "Local Revision on Left Side" : {
+
+    },
+    "Local Revision on Right Side" : {
+
+    },
+    "Location" : {
+
+    },
+    "LSP Binaries" : {
+
+    },
+    "Manage Extensions" : {
+
+    },
+    "Match Case" : {
+
+    },
+    "Medium" : {
+
+    },
+    "Message (optional)" : {
+
+    },
+    "MIT License" : {
+
+    },
+    "Monochrome" : {
+
+    },
+    "My Mac" : {
+
+    },
+    "Name" : {
+
+    },
+    "Native" : {
+
+    },
+    "Navigate" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naviga"
+          }
+        }
+      }
+    },
+    "Navigate back" : {
+
+    },
+    "Navigate forward" : {
+
+    },
+    "Navigation Style" : {
+
+    },
+    "Navigator Tab Bar Position" : {
+
+    },
+    "Navigators" : {
+
+    },
+    "New" : {
+
+    },
+    "New Branch from \"%@\"..." : {
+
+    },
+    "New Branch from %@..." : {
+
+    },
+    "New Branch..." : {
+
+    },
+    "New Document" : {
+
+    },
+    "New Terminal" : {
+
+    },
+    "New Terminal With Profile" : {
+
+    },
+    "No accounts" : {
+
+    },
+    "No environment variables" : {
+
+    },
+    "No excluded glob patterns" : {
+
+    },
+    "No GitHub Account" : {
+
+    },
+    "No matching options" : {
+
+    },
+    "No output" : {
+
+    },
+    "No Recent Projects" : {
+
+    },
+    "No remotes" : {
+
+    },
+    "No Selection" : {
+
+    },
+    "No tasks" : {
+
+    },
+    "None" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuno"
+          }
+        }
+      }
+    },
+    "Nothing to debug" : {
+
+    },
+    "OK" : {
+
+    },
+    "Okay" : {
+
+    },
+    "Open Extensions Window" : {
+
+    },
+    "Open File or Folder..." : {
+
+    },
+    "Open in New Tab" : {
+
+    },
+    "Open in New Window" : {
+
+    },
+    "Open in Next Editor" : {
+
+    },
+    "Open in Place" : {
+
+    },
+    "Open in Tabs" : {
+
+    },
+    "Open in..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri in"
+          }
+        }
+      }
+    },
+    "Open Panel" : {
+
+    },
+    "Open Quickly" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri Velocemente"
+          }
+        }
+      }
+    },
+    "Open Recent" : {
+
+    },
+    "Open..." : {
+
+    },
+    "Opening %@..." : {
+
+    },
+    "Other fonts..." : {
+
+    },
+    "Output Source" : {
+
+    },
+    "Passphrase" : {
+
+    },
+    "Personal Access Token" : {
+
+    },
+    "Please describe the issue:" : {
+
+    },
+    "Please list the steps you took to reproduce the issue:" : {
+
+    },
+    "Please provide a descriptive title for your feedback:" : {
+
+    },
+    "Prefer Indent Using" : {
+
+    },
+    "Prefer to rebase when pulling" : {
+
+    },
+    "Preserve Case" : {
+
+    },
+    "Preview" : {
+
+    },
+    "print" : {
+
+    },
+    "Profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilo"
+          }
+        }
+      }
+    },
+    "Project Navigator Size" : {
+
+    },
+    "Pull" : {
+
+    },
+    "Pulling..." : {
+
+    },
+    "Push" : {
+
+    },
+    "Pushing..." : {
+
+    },
+    "Quit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci"
+          }
+        }
+      }
+    },
+    "Refresh local status automatically" : {
+
+    },
+    "Release Notes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note di Rilascio"
+          }
+        }
+      }
+    },
+    "Remote Name" : {
+
+    },
+    "Remove" : {
+
+    },
+    "Remove from Recents" : {
+
+    },
+    "Remove..." : {
+
+    },
+    "Rename" : {
+
+    },
+    "Rename \"%@\"..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinomina \"%@\"..."
+          }
+        }
+      }
+    },
+    "Rename branch" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinomina Ramo"
+          }
+        }
+      }
+    },
+    "Rename Branch..." : {
+
+    },
+    "Rename..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinomina..."
+          }
+        }
+      }
+    },
+    "Reopen Behavior" : {
+
+    },
+    "Replace All" : {
+
+    },
+    "Replacing" : {
+
+    },
+    "repo" : {
+
+    },
+    "Report an Issue" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Reset \"Don't Ask Me\" Warnings" : {
+
+    },
+    "Retry" : {
+
+    },
+    "Reveal Changes in Navigator" : {
+
+    },
+    "Reveal in Project Navigator" : {
+
+    },
+    "Save" : {
+
+    },
+    "Scoped" : {
+
+    },
+    "Search" : {
+
+    },
+    "Search only in Open Editors" : {
+
+    },
+    "Searching" : {
+
+    },
+    "Select a branch to checkout" : {
+
+    },
+    "Select an extension" : {
+
+    },
+    "Select an option to preview" : {
+
+    },
+    "Select Down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Down"
+          }
+        }
+      }
+    },
+    "Select files to commit automatically" : {
+
+    },
+    "Select Up" : {
+
+    },
+    "Server" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        }
+      }
+    },
+    "Settings" : {
+
+    },
+    "Settings..." : {
+
+    },
+    "Shell" : {
+
+    },
+    "Show “Open With CodeEdit” option in Finder" : {
+
+    },
+    "Show all" : {
+
+    },
+    "Show Command Palette" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Command Palette"
+          }
+        }
+      }
+    },
+    "Show files with matching name" : {
+
+    },
+    "Show in Finder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show in Finder\n"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra nel Finder"
+          }
+        }
+      }
+    },
+    "Show Inline" : {
+
+    },
+    "Show Issues" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra Issues"
+          }
+        }
+      }
+    },
+    "Show Live Issues" : {
+
+    },
+    "Show merge commits in per-file log" : {
+
+    },
+    "Show Minimized" : {
+
+    },
+    "Show Next Tab" : {
+
+    },
+    "Show only" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra solo"
+          }
+        }
+      }
+    },
+    "Show only files with source-control status" : {
+
+    },
+    "Show only recent files" : {
+
+    },
+    "Show Path Bar" : {
+
+    },
+    "Show Previous Tab" : {
+
+    },
+    "Show results with matching text" : {
+
+    },
+    "Show source control changes" : {
+
+    },
+    "Show the Utility area" : {
+
+    },
+    "Show Welcome Window" : {
+
+    },
+    "Side" : {
+
+    },
+    "Sign In" : {
+
+    },
+    "Sign in to %@" : {
+
+    },
+    "Small" : {
+
+    },
+    "Sort by Date" : {
+
+    },
+    "Sort by Name" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordina per Nome"
+          }
+        }
+      }
+    },
+    "Source control navigator" : {
+
+    },
+    "spaces" : {
+
+    },
+    "Spaces" : {
+
+    },
+    "Specify the absolute path to your LSP binary and its associated language." : {
+
+    },
+    "Specify the language and the absolute path to the language server binary." : {
+
+    },
+    "Split Down" : {
+
+    },
+    "Split Horizontally" : {
+
+    },
+    "Split Left" : {
+
+    },
+    "Split Right" : {
+
+    },
+    "Split Up" : {
+
+    },
+    "Split Vertically" : {
+
+    },
+    "SSH" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSH"
+          }
+        }
+      }
+    },
+    "SSH Key" : {
+
+    },
+    "Stage All" : {
+
+    },
+    "Stash" : {
+
+    },
+    "Stash Changes" : {
+
+    },
+    "Stash Changes..." : {
+
+    },
+    "Submit" : {
+
+    },
+    "System" : {
+
+    },
+    "System Default" : {
+
+    },
+    "System Font" : {
+
+    },
+    "Tab" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tab"
+          }
+        }
+      }
+    },
+    "Tab Bar Style" : {
+
+    },
+    "Tab not found" : {
+
+    },
+    "Tab Width" : {
+
+    },
+    "Tabs" : {
+
+    },
+    "Tag %@..." : {
+
+    },
+    "Target" : {
+
+    },
+    "Task" : {
+
+    },
+    "Tasks" : {
+
+    },
+    "Terminal Cursor Style" : {
+
+    },
+    "Terminal Tab" : {
+
+    },
+    "Text Settings" : {
+
+    },
+    "The branch will be removed from the repository. You can’t undo this action." : {
+
+    },
+    "The local repository has uncommitted changes." : {
+
+    },
+    "The number of spaces to insert when the tab key is pressed." : {
+
+    },
+    "The remote will be removed from the repository. You can’t undo this action." : {
+
+    },
+    "The stash will be removed from the repository. You can’t undo this action." : {
+
+    },
+    "The visual width of tab characters" : {
+
+    },
+    "The visual width of tabs." : {
+
+    },
+    "Themes" : {
+
+    },
+    "There are no uncommitted changes in the local repository for this project." : {
+
+    },
+    "This git client is currently not supported." : {
+
+    },
+    "To" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A"
+          }
+        }
+      }
+    },
+    "Top" : {
+
+    },
+    "Try committing or discarding the changes." : {
+
+    },
+    "Type" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo"
+          }
+        }
+      }
+    },
+    "Unable to add account “%@”" : {
+
+    },
+    "Underline" : {
+
+    },
+    "Unfocus this Editor" : {
+
+    },
+    "Unstage All" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unstage All"
+          }
+        }
+      }
+    },
+    "Use \"Option\" key as \"Meta\"" : {
+
+    },
+    "Use Custom Color" : {
+
+    },
+    "Use Exclude Settings and Ignore Files" : {
+
+    },
+    "Use Selection for Find" : {
+
+    },
+    "Use Spaces" : {
+
+    },
+    "Use Tabs" : {
+
+    },
+    "Use text editor font" : {
+
+    },
+    "Use theme background " : {
+
+    },
+    "user" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "user"
+          }
+        }
+      }
+    },
+    "User Profile" : {
+
+    },
+    "Username" : {
+
+    },
+    "UTF 8" : {
+
+    },
+    "Version %@%@ (%@)" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione %1$@%2$@ (%3$@)"
+          }
+        }
+      }
+    },
+    "View in Finder" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra nel Finder"
+          }
+        }
+      }
+    },
+    "View on %@..." : {
+
+    },
+    "Welcome Screen" : {
+
+    },
+    "Welcome to CodeEdit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benvenuto in MathLateX"
+          }
+        }
+      }
+    },
+    "Welcome To CodeEdit" : {
+
+    },
+    "What actually happened?" : {
+
+    },
+    "What did you expect to happen?" : {
+
+    },
+    "What type of feedback are you reporting?" : {
+
+    },
+    "What's New in CodeEdit" : {
+
+    },
+    "Which area are you seeing an issue with?" : {
+
+    },
+    "Widths" : {
+
+    },
+    "Working Directory" : {
+
+    },
+    "Workspace Settings" : {
+
+    },
+    "Wrap lines" : {
+
+    },
+    "Wrap lines to editor width" : {
+
+    },
+    "write:discussion" : {
+
+    },
+    "Xcode" : {
+
+    },
+    "ZSH" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZSH"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

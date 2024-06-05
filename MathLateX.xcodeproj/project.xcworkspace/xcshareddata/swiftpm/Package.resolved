@@ -1,5 +1,5 @@
 {
-  "originHash" : "41fcbec1ecbb7853d9ead798bba9d46f35f28767f4d41a009c8eeee022e99a84",
+  "originHash" : "b2ba955db38582ede99faf73e6472a7f4da9f74e4ef9e087c6332a13058c38fc",
   "pins" : [
     {
       "identity" : "anycodable",
@@ -83,6 +83,15 @@
       }
     },
     {
+      "identity" : "keyboardshortcuts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
+      "state" : {
+        "revision" : "2e5f15581fefb821d4b366e57d817be8bf12aa58",
+        "version" : "2.0.1"
+      }
+    },
+    {
       "identity" : "logstream",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Wouter01/LogStream",
@@ -152,6 +161,15 @@
       "state" : {
         "revision" : "ea6d3ca895b49910f790e98e4b4ca658e0fe490e",
         "version" : "0.54.0"
+      }
+    },
+    {
+      "identity" : "swiftmath",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mgriebling/SwiftMath.git",
+      "state" : {
+        "revision" : "3964a0c4b13abcb5b58c8ebb8041ce67f393c414",
+        "version" : "1.4.0"
       }
     },
     {
