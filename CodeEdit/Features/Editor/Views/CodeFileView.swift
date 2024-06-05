@@ -136,7 +136,7 @@ struct CodeFileView: View {
             }
         }
         .colorScheme(
-            selectedTheme.appearance == .dark
+            selectedTheme.appearance == .light
             ? .dark
             : .light
         )

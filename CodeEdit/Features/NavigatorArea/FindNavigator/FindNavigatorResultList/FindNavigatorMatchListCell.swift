@@ -35,7 +35,7 @@ final class FindNavigatorListMatchCell: NSTableCellView {
 
         self.addSubview(icon)
         self.imageView = icon
-
+        
         // Constraints
 
         NSLayoutConstraint.activate([

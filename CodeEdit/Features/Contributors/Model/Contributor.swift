@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ContributorsRoot: Codable {
+open class ContributorsRoot: Codable {
     var contributors: [Contributor]
 }
 
-struct Contributor: Codable, Identifiable {
-    var id: String { login }
+open class Contributor: Codable, Identifiable {
+    public var id: String { login }
     var login: String
     var name: String
     var avatarURLString: String

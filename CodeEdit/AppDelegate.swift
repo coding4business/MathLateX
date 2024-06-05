@@ -158,6 +158,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         FeedbackView().showWindow()
     }
 
+    @IBAction private func openSettings(_ sender: Any) {
+        openWindow(sceneID: .settings)
+    }
+
+
     @IBAction private func checkForUpdates(_ sender: Any) {
         updater.checkForUpdates()
     }

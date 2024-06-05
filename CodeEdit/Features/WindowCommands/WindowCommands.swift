@@ -17,16 +17,19 @@ struct WindowCommands: Commands {
                 openWindow(sceneID: .welcome)
             }
             .keyboardShortcut("1", modifiers: [.shift, .command])
-
             Button("About CodeEdit") {
                 openWindow(sceneID: .about)
             }
             .keyboardShortcut("2", modifiers: [.shift, .command])
+            Button("Settings") {
+                openWindow(sceneID: .settings)
+            }
+            .keyboardShortcut("3", modifiers: [.shift, .command])
 
             Button("Manage Extensions") {
                 openWindow(sceneID: .extensions)
             }
-            .keyboardShortcut("3", modifiers: [.shift, .command])
+            .keyboardShortcut("4", modifiers: [.shift, .command])
         }
     }
 }

@@ -11,6 +11,7 @@ enum AboutMode: String, CaseIterable {
     case about
     case acknowledgements
     case contributors
+
 }
 
 public struct AboutView: View {
@@ -34,6 +35,8 @@ public struct AboutView: View {
                 AcknowledgementsView(aboutMode: $aboutMode, namespace: animator)
             case .contributors:
                 ContributorsView(aboutMode: $aboutMode, namespace: animator)
+
+
             }
         }
         .animation(.spring(), value: aboutMode)

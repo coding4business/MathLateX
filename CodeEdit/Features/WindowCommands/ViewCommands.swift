@@ -66,9 +66,9 @@ struct ViewCommands: Commands {
             .disabled(windowController == nil)
 
             Button("Customize Toolbar...") {
-
+    
             }
-            .disabled(true)
+            .disabled(false)
 
             Divider()
 
@@ -127,6 +127,10 @@ struct HideCommands: View {
 
         Button("\(inspectorCollapsed ? "Show" : "Hide") Inspector") {
             windowController.toggleLastPanel()
+        }
+        Button("\(inspectorCollapsed ? "Show" : "Hide") Settings") {
+            windowController.toggleSettingsView()
+            CommandManager.shared.executeCommand("open.drawer")
         }
         .disabled(windowController.window == nil)
         .keyboardShortcut("i", modifiers: [.control, .command])
