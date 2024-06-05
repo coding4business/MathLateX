@@ -103,12 +103,12 @@ struct ToolbarBranchPicker: View {
   /// A popover view that appears once the branch picker is tapped.
   ///
   /// It displays the currently checked-out branch and all other local branches.
-  private struct PopoverView: View {
+    private struct PopoverView: View {
     @ObservedObject var sourceControlManager: SourceControlManager
 
     var body: some View {
       VStack(alignment: .leading) {
-        if let currentBranch = sourceControlManager.currentBranch {
+          if let currentBranch = sourceControlManager.currentBranch {
           Section {
             headerLabel("Current Branch")
             BranchCell(
@@ -158,6 +158,7 @@ struct ToolbarBranchPicker: View {
                         Text(group.name)
                       }
                     })
+                  .menuIndicator(.visible)
                 }
               }
             }

@@ -415,6 +415,7 @@
 		AA3032B92C083C9F0089A342 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA3032B32C083C9F0089A342 /* .gitignore */; };
 		AA3032BA2C083C9F0089A342 /* CODE_OF_CONDUCT.md in Resources */ = {isa = PBXBuildFile; fileRef = AA3032B42C083C9F0089A342 /* CODE_OF_CONDUCT.md */; };
 		AA3032BB2C083C9F0089A342 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = AA3032B52C083C9F0089A342 /* LICENSE.md */; };
+		AA6727622C111F6100E5AB71 /* MathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6727612C111F6100E5AB71 /* MathView.swift */; };
 		AA7391252C0D1FE70020DDAE /* UserProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7391242C0D1FE70020DDAE /* UserProfileMenu.swift */; };
 		AA73912D2C0D20730020DDAE /* IconSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7391272C0D20720020DDAE /* IconSize.swift */; };
 		AA73912E2C0D20730020DDAE /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7391282C0D20720020DDAE /* AppColor.swift */; };
@@ -998,6 +999,7 @@
 		AA3032B32C083C9F0089A342 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AA3032B42C083C9F0089A342 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		AA3032B52C083C9F0089A342 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		AA6727612C111F6100E5AB71 /* MathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathView.swift; sourceTree = "<group>"; };
 		AA7391242C0D1FE70020DDAE /* UserProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileMenu.swift; sourceTree = "<group>"; };
 		AA7391272C0D20720020DDAE /* IconSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconSize.swift; sourceTree = "<group>"; };
 		AA7391282C0D20720020DDAE /* AppColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -1501,6 +1503,7 @@
 				587B9E0129301D8F00AC7927 /* Git */,
 				B6EE988E27E8877C00CDD8AB /* InspectorArea */,
 				58A5DF9D29339F6400D1BD5D /* Keybindings */,
+				AA67275E2C10F47100E5AB71 /* MenuBar */,
 				287776EA27E350A100D46668 /* NavigatorArea */,
 				AA7391622C0D4F510020DDAE /* Printer */,
 				5878DAA0291AE76700DD95A3 /* QuickOpen */,
@@ -2647,6 +2650,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AA67275E2C10F47100E5AB71 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
 		AA7391262C0D204C0020DDAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -2950,6 +2960,7 @@
 				66F370332BEE537B00D3B823 /* NonTextFileView.swift */,
 				66F2C8C32BEAA939004674F7 /* PDFFileView.swift */,
 				6C5B63DD29C76213005454BA /* WindowCodeFileView.swift */,
+				AA6727612C111F6100E5AB71 /* MathView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3549,6 +3560,7 @@
 				587B9E7F29301D8F00AC7927 /* GitHubUserRouter.swift in Sources */,
 				B62AEDBC2A210DBB009A9F52 /* UtilityAreaTerminalTab.swift in Sources */,
 				AA7391302C0D20730020DDAE /* Spacing.swift in Sources */,
+				AA6727622C111F6100E5AB71 /* MathView.swift in Sources */,
 				B67DB0F62AFC2A7A002DC647 /* FindNavigatorToolbarBottom.swift in Sources */,
 				04BA7C142AE2AA7300584E1C /* GitCloneViewModel.swift in Sources */,
 				B61A606129F188AB009B43F9 /* ExternalLink.swift in Sources */,

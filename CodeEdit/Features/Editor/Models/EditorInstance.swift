@@ -77,7 +77,7 @@ class EditorInstance: Hashable {
         /// - Returns: The number of lines contained by the given range. Or `0` if the text view could not be found,
         ///            or lines could not be found for the given range.
         func linesInRange(_ range: NSRange) -> Int {
-            // TODO: textView should be public, workaround for now
+            // Da Fare: textView should be public, workaround for now
             guard let controller = textViewController,
                   let scrollView = controller.view as? NSScrollView,
                   let textView = scrollView.documentView as? TextView,

@@ -10,7 +10,7 @@ import SwiftUI
 struct UtilityAreaSplitTerminalButton: View {
     var body: some View {
         Button {
-            // todo
+            // Da Fare
         } label: {
             Image(systemName: "square.split.2x1")
                 .foregroundColor(.secondary)

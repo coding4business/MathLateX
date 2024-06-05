@@ -24,10 +24,10 @@ struct HistoryPopoverView: View {
                 .padding(.horizontal)
 
             VStack(alignment: .leading, spacing: 0) {
-                // TODO: Implementation Needed
+                // Da Fare: Implementation Needed
                 ActionButton("Show Commit", systemImage: "clock") {}
                     .disabled(true)
-                // TODO: Implementation Needed
+                // Da Fare: Implementation Needed
                 ActionButton("Open in Code Review", systemImage: "arrow.left.arrow.right") {}
                     .disabled(true)
                 ActionButton("Email \(commit.author)", systemImage: "envelope") {

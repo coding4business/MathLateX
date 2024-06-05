@@ -61,7 +61,7 @@ struct ProjectNavigatorToolbarBottom: View {
                 hasValue: !filter.isEmpty || recentsFilter || sourceControlFilter
             )
             //            .onChange(of: filter, perform: {
-            // TODO: Filter Workspace Files
+            // Da Fare: Filter Workspace Files
             //                workspace.filter = $0
             //            })
         }

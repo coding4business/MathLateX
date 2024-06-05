@@ -47,7 +47,7 @@ final class CodeEditDocumentController: NSDocumentController {
 
     override func openDocument(_ sender: Any?) {
         self.openDocument(onCompletion: { document, documentWasAlreadyOpen in
-            // TODO: handle errors
+            // Da Fare: handle errors
             guard let document else {
                 print("Failed to unwrap document")
                 return

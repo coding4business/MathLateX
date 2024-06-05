@@ -17,8 +17,9 @@ extension CodeEditWindowController {
     WindowCommands().openWindow(sceneID: .settings)
   }
 
-  func centeredItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    [.print, .cloudSharing, .showFonts, .showFonts]
+  @objc
+  func centeredItemIdentifiers(_ toolbar: NSToolbar) -> Set<NSToolbarItem.Identifier> {
+    return Set<NSToolbarItem.Identifier>(arrayLiteral: .print, .cloudSharing, .showFonts, .showColors)
   }
 
   @objc
@@ -42,6 +43,10 @@ extension CodeEditWindowController {
     if let codeEditSplitVC = splitViewController as? CodeEditSplitViewController {
       codeEditSplitVC.saveNavigatorCollapsedState(isCollapsed: lastSplitView.isCollapsed)
     }
+  }
+
+  func createAddToolbarItem(itemIdentifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
+    return NSToolbarItem(itemIdentifier: itemIdentifier)
   }
 
   /// These are example items that added as commands to command palette
@@ -130,25 +135,26 @@ extension CodeEditWindowController {
     self.setDocumentEdited(hasEditedDocuments)
   }
 
-    private func insertToolbarItemIfNeeded() {
-        guard !(
-            window?.toolbar?.items.contains(where: { $0.itemIdentifier == .branchPicker }) ?? true
-        ) else {
-            return
-        }
-        window?.toolbar?.insertItem(withItemIdentifier: .branchPicker, at: 4)
-
+  private func insertToolbarItemIfNeeded() {
+    guard !(window?.toolbar?.items.contains(where: { $0.itemIdentifier == .branchPicker }) ?? true)
+    else {
+      return
     }
+    window?.toolbar?.insertItem(withItemIdentifier: .branchPicker, at: 4)
 
-        /// Quick fix for list tracking separator needing to be removed after closing the inspector with a drag
-    private func removeToolbarItemIfNeeded() {
-        guard let index = window?.toolbar?.items.firstIndex(
-            where: { $0.itemIdentifier == .itemListTrackingSeparator }
-        ) else {
-            return
-        }
-        window?.toolbar?.removeItem(at: index)
+  }
+
+  /// Quick fix for list tracking separator needing to be removed after closing the inspector with a drag
+  private func removeToolbarItemIfNeeded() {
+    guard
+      let index = window?.toolbar?.items.firstIndex(
+        where: { $0.itemIdentifier == .itemListTrackingSeparator }
+      )
+    else {
+      return
     }
+    window?.toolbar?.removeItem(at: index)
+  }
 
   @IBAction func openWorkspaceSettings(_ sender: Any) {
     guard let workspaceSettings, let window = window, let workspace = workspace else {
@@ -186,13 +192,13 @@ extension NSToolbarItem.Identifier {
   static let itemListTrackingSeparator = NSToolbarItem.Identifier("ItemListTrackingSeparator")
   static let branchPicker: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BranchPicker")
   static let toggleUserMenu: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleUserMenu")
-    static let firstSidebarToolbarItems: [NSToolbarItem.Identifier] = [
-        NSToolbarItem.Identifier("ToggleUserMenu")
-    ]
-    static let middleToolbarItems: [NSToolbarItem.Identifier] = [
-        NSToolbarItem.Identifier("ToggleUserMenu")
-    ]
-    static let lastSidebarToolbarItem: [NSToolbarItem.Identifier] = [
-        NSToolbarItem.Identifier("ToggleUserMenu")
-    ]
+  static let firstSidebarToolbarItems: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
+  static let middleToolbarItems: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
+  static let lastSidebarToolbarItem: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
 }

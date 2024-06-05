@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 class BitBucketUser: Codable {
     var id: String?
     var login: String?

@@ -10,7 +10,7 @@ import Foundation
 import FoundationNetworking
 #endif
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 extension GitHubAccount {
     func postPublicKey(
         _ session: GitURLSession = URLSession.shared,

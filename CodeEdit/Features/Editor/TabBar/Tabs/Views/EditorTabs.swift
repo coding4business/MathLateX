@@ -11,7 +11,7 @@ import SwiftUI
 // It has the gesture implementation and its animations.
 // I am now also disabling `file_length` rule because the dragging algorithm (with UX) is complex.
 // swiftlint:disable file_length type_body_length
-// - TODO: EditorTabView drop-outside event handler.
+// - Da Fare: EditorTabView drop-outside event handler.
 
 struct EditorTabs: View {
     typealias TabID = CEWorkspaceFile.ID
@@ -37,13 +37,13 @@ struct EditorTabs: View {
     /// The start location of dragging.
     ///
     /// When there is no tab being dragged, it will be `nil`.
-    /// - TODO: Check if I can use `value.startLocation` trustfully.
+    /// - Da Fare: Check if I can use `value.startLocation` trustfully.
     @State private var draggingStartLocation: CGFloat?
 
     /// The last location of dragging.
     ///
     /// This is used to determine the dragging direction.
-    /// - TODO: Check if I can use `value.translation` instead.
+    /// - Da Fare: Check if I can use `value.translation` instead.
     @State private var draggingLastLocation: CGFloat?
 
     /// Current opened tabs.
@@ -89,7 +89,7 @@ struct EditorTabs: View {
     /// When it is true, then the `onDrag` is over the tabs, then we leave the space for dragged tab.
     /// When it is false, then the dragging cursor is outside the tab bar, then we should shrink the space.
     ///
-    /// - TODO: The change of this state is overall incorrect. Should move it into workspace state.
+    /// - Da Fare: The change of this state is overall incorrect. Should move it into workspace state.
     @State private var isOnDragOverTabs: Bool = false
 
     /// The last location of `onDrag`.
@@ -130,7 +130,7 @@ struct EditorTabs: View {
                     draggingStartLocation = value.startLocation.x
                     draggingLastLocation = value.location.x
                 }
-                // TODO: Enable this code snippet when re-enabling dragging-out behavior.
+                // Da Fare: Enable this code snippet when re-enabling dragging-out behavior.
                 // I disabled (1 == 0) this behavior for now as dragging-out behavior isn't allowed.
                 if 1 == 0 && abs(value.location.y - value.startLocation.y) > EditorTabBarView.height {
                     shouldOnDrag = true
@@ -226,7 +226,7 @@ struct EditorTabs: View {
                             editor.tabs.first { $0.file.id == id }
                         })
                         // workspace.reorderedTabs(openedTabs: openedTabs)
-                        // TODO: Fix save state
+                        // Da Fare: Fix save state
                     }
                 }
             })
@@ -309,10 +309,10 @@ struct EditorTabs: View {
                                     makeTabDragGesture(id: id),
                                     including: shouldOnDrag ? .subviews : .all
                                 )
-                                // TODO: Detect the onDrag outside of tab bar.
+                                // Da Fare: Detect the onDrag outside of tab bar.
                                 // Detect the drop action of each tab.
                                 .onDrop(
-                                    of: [.utf8PlainText], // TODO: Make a unique type for it.
+                                    of: [.utf8PlainText], // Da Fare: Make a unique type for it.
                                     delegate: EditorTabOnDropDelegate(
                                         currentTabId: id,
                                         openedTabs: $openedTabs,

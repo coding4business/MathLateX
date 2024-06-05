@@ -20,7 +20,13 @@ struct UserProfileMenuPicker: View {
     self.user = user
   }
 
+    init?(nibName nibNameOrNil: NSNib.Name?) {
+        return nil
+    }
+
   var body: some View {
-        UserProfileMenu(user: user)
+      VStack(alignment: .center) {
+          UserProfileMenu(user: user)
+      }
     }
 }

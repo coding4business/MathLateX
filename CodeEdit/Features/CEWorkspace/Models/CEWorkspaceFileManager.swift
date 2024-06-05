@@ -217,7 +217,7 @@ final class CEWorkspaceFileManager {
                     // Can be ignored for now, these I think not related to tree changes
                     continue
                 case .rootChanged:
-                    // TODO: Handle workspace root changing.
+                    // Da Fare: Handle workspace root changing.
                     continue
                 case .itemCreated, .itemCloned, .itemRemoved, .itemRenamed:
                     try? self.rebuildFiles(fromItem: parentItem)

@@ -89,6 +89,15 @@ extension CodeEditWindowController {
     updateToolbarVisibility()
   }
 
+  func toolbarItems() -> [NSToolbarItem.Identifier] {
+    return [.toggleSidebar, .flexibleSpace, .cloudSharing]
+  }
+
+  func centeredItemIdentifiers() {
+    let toolbar: NSToolbar? = window?.toolbar
+    toolbar?.centeredItemIdentifiers = centeredItemIdentifiers(toolbar!)
+  }
+
   private func updateToolbarVisibility() {
     if toolbarCollapsed {
       window?.titleVisibility = .visible
@@ -147,25 +156,22 @@ extension CodeEditWindowController {
         systemSymbolName: "gear",
         accessibilityDescription: nil
       )?.withSymbolConfiguration(.init(scale: .large))
-      toolbarItem.label = "Navigator Sidebar"
-      toolbarItem.paletteLabel = " Navigator Sidebar"
-      toolbarItem.toolTip = "Hide or show the Navigator"
+      toolbarItem.label = "Settings"
+      toolbarItem.paletteLabel = "Settings"
+      toolbarItem.toolTip = "Settings"
       toolbarItem.isBordered = true
       toolbarItem.target = self
       toolbarItem.action = #selector(self.toggleSettingsView)
       return toolbarItem
     case .toggleFirstSidebarItem:
-            let toolbarItem = SwiftUI.NSToolbarItem(
+      let toolbarItem = SwiftUI.NSToolbarItem(
         itemIdentifier: NSToolbarItem.Identifier.toggleFirstSidebarItem)
-            toolbarItem.image = NSImage(
+      toolbarItem.image = NSImage(
         systemSymbolName: "sidebar.leading",
         accessibilityDescription: nil
-            )?.withSymbolConfiguration(.init(scale: .large))
-            toolbarItem.image!.size = .init(width: 48, height: 48)
-            toolbarItem.view?.frame.size = .init(width: 48, height: 48)
-            toolbarItem.view?.frame.fill()
+      )?.withSymbolConfiguration(.init(scale: .large))
       toolbarItem.label = "Navigator Sidebar"
-      toolbarItem.paletteLabel = " Navigator Sidebar"
+      toolbarItem.paletteLabel = "Navigator Sidebar"
       toolbarItem.toolTip = "Hide or show the Navigator"
       toolbarItem.isBordered = true
       toolbarItem.target = self
@@ -186,7 +192,7 @@ extension CodeEditWindowController {
       )?.withSymbolConfiguration(.init(scale: .large))
       return toolbarItem
     case .itemListTrackingSeparator:
-      let toolbarItem = NSToolbarItem(
+            _ = NSToolbarItem(
         itemIdentifier: NSToolbarItem.Identifier.itemListTrackingSeparator)
       guard let splitViewController else { return nil }
       return NSTrackingSeparatorToolbarItem(
@@ -204,7 +210,7 @@ extension CodeEditWindowController {
       )
       let toolbarItem = NSToolbarItem(itemIdentifier: .toggleUserMenu)
       let hostingView = NSHostingView(
-        rootView: UserProfileMenuPicker(user: user)
+        rootView: UserProfileMenuPicker.init(nibName: nil)
       )
       setToolbarItemProperties(
         toolbarItem: toolbarItem, view: hostingView, label: user.name,

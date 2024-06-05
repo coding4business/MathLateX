@@ -12,7 +12,7 @@ import Foundation
 import FoundationNetworking
 #endif
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 protocol GitJSONPostRouter: GitRouter {
 
     func postJSON<T>(

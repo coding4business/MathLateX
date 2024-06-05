@@ -14,7 +14,7 @@ struct SourceControlAccount: Codable, Identifiable, Hashable {
     var description: String
     var provider: Provider
     var serverURL: String
-    // TODO: Should we use an enum instead of a boolean here:
+    // Da Fare: Should we use an enum instead of a boolean here:
     // If true we use the HTTP protocol else if false we use SSH
     var urlProtocol: URLProtocol
     var sshKey: String

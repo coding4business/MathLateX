@@ -17,6 +17,16 @@
         }
       }
     },
+    "(%lld, %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "(%1$lld, %2$lld)"
+          }
+        }
+      }
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -833,9 +843,6 @@
 
     },
     "Line Height" : {
-
-    },
-    "Loading ..." : {
 
     },
     "Loading History" : {

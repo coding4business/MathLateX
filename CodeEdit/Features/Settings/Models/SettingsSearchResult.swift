@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// TODO: Extend this struct further to support setting "flashing"
+// Da Fare: Extend this struct further to support setting "flashing"
 final class SettingsSearchResult: Identifiable {
     let id: UUID = UUID()
     let pageFound: Bool

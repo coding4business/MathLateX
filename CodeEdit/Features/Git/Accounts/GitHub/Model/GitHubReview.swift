@@ -10,7 +10,7 @@ import Foundation
 import FoundationNetworking
 #endif
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 struct GitHubReview {
     let body: String
     let commitID: String

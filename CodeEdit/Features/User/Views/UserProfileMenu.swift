@@ -7,6 +7,44 @@
 
 import SwiftUI
 
+struct Shadow: View {
+  let steps = [0, 5, 10]
+
+  var body: some View {
+    VStack(spacing: 50) {
+      ForEach(steps, id: \.self) { offset in
+        HStack(spacing: 50) {
+          ForEach(steps, id: \.self) { radius in
+            Color.blue
+              .shadow(
+                color: .primary,
+                radius: CGFloat(radius),
+                x: CGFloat(offset), y: CGFloat(offset)
+              )
+              .overlay {
+                VStack {
+                  Text("\(radius)")
+                  Text("(\(offset), \(offset))")
+                }
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+struct RedBorderedButtonStyle: PrimitiveButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    Button(configuration)
+      .frame(width: 38, height: 38, alignment: .topTrailing)
+      .border(Color.red, width: 2)
+      .buttonBorderShape(.circle)
+      .buttonStyle(.plain)
+      .labelStyle(.iconOnly)
+  }
+}
+
 struct UserProfileMenu: View {
   var user: User
 
@@ -14,45 +52,50 @@ struct UserProfileMenu: View {
 
   @Namespace var animator
   var body: some View {
-    Button {
-      showHint.toggle()
-    } label: {
-      AsyncImage(
-        url: URL(string: user.avatarURLString)!,
-        placeholder: { Text("Loading ...") },
-        image: { Image(nsImage: $0).resizable() }
-      )
-      .frame(width: 38, height: 38)
-      .aspectRatio(contentMode: .fill)
-      .background(Color.init(hex: "#2d2f31"))
-      .clipShape(Circle())
-      .overlay(
-        Circle()
-          .frame(width: 1, height: 1, alignment: .center)
-          .border(.gray, width: 1.5)
-          .background(.gray)
-      )
-    }
-    .buttonStyle(.plain)
-    .popover(isPresented: $showHint) {
-      VStack(alignment: .trailing) {
-        HStack(
-          content: {
-            UserRowView(user: user)
-          })
-          .padding(6)
-        Divider()
-
-        HStack(
-          content: {
-            UserRowView(user: user)
-          })
-          .padding(6)
-        Divider()
+    HStack(alignment: .center) {
+      Button {
+        showHint.toggle()
+      } label: {
+        AsyncImage(
+          url: URL(string: user.avatarURLString)!,
+          placeholder: {
+            Image(systemName: "person.circle.fill")
+              .resizable()
+              .clipShape(Circle())
+              .frame(width: 40, height: 40)
+          },
+          image: { Image(nsImage: $0).resizable() }
+        )
+        .frame(width: 40, height: 40)
+        .aspectRatio(1.0, contentMode: .fill)
+        .background(Color.init(hex: "#272c33"))
+        .clipShape(.circle)
+        .overlay(
+          Circle()
+            .stroke(Color.gray.quinary, lineWidth: 1.5)
+        )
+        .preferredColorScheme(.dark)
       }
-      .frame(width: 300)
-      .padding(6)
+      .buttonStyle(.plain)
+      .popover(isPresented: $showHint) {
+        VStack {
+          HStack(
+            content: {
+              UserRowView(user: user)
+            })
+            .padding(6)
+          Divider()
 
+          HStack(
+            content: {
+              UserRowView(user: user)
+            })
+            .padding(6)
+          Divider()
+        }
+        .frame(width: 300)
+        .padding(6)
+      }
     }
   }
 }

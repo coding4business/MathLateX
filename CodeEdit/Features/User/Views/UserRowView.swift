@@ -17,8 +17,7 @@ struct UserRowView: View {
             userImage
             VStack(alignment: .leading) {
                 HStack(spacing: 8) {
-                    Text(user.name)
-                        .font(.headline)
+                    Text(user.name).font(.headline)
                 }
                 Spacer()
                 HStack(spacing: 8) {
@@ -50,9 +49,8 @@ struct UserRowView: View {
           Image(systemName: "person.circle.fill")
               .resizable()
               .padding(.trailing, 6)
-              .clipShape(Ellipse())
+              .clipShape(Circle())
               .frame(width: 48, height: 48)
-              .help(user.name)
       }
   }
 

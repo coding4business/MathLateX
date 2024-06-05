@@ -204,7 +204,7 @@ final class ProjectNavigatorMenu: NSMenu {
         item?.openWithExternalEditor()
     }
 
-    // TODO: allow custom file names
+    // Da Fare: allow custom file names
     /// Action that creates a new untitled file
     @objc
     private func newFile() {
@@ -213,7 +213,7 @@ final class ProjectNavigatorMenu: NSMenu {
         outlineView.expandItem(item.isFolder ? item : item.parent)
     }
 
-    // TODO: allow custom folder names
+    // Da Fare: allow custom folder names
     /// Action that creates a new untitled folder
     @objc
     private func newFolder() {

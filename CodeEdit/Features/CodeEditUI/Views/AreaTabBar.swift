@@ -38,7 +38,7 @@ struct AreaTabBar<Tab: AreaTab>: View {
   /// The last location of dragging.
   ///
   /// This is used to determine the dragging direction.
-  /// - TODO: Check if I can use `value.translation` instead.
+  /// - Da Fare: Check if I can use `value.translation` instead.
   @State private var draggingLastLocation: CGFloat?
 
   var body: some View {

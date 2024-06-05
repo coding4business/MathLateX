@@ -9,7 +9,7 @@
 
 import Foundation
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 enum GitHTTPMethod: String {
   case GET, POST, PUT, PATCH, DELETE
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct TasksCEWorkspaceSettingsView: View {
     let workspace: WorkspaceDocument
 
-    // TODO: Separate Project Settings from Task Settings
+    // Da Fare: Separate Project Settings from Task Settings
     @Binding var projectSettings: CEWorkspaceSettingsData.ProjectSettings
     @Binding var settings: CEWorkspaceSettingsData.TasksSettings
 

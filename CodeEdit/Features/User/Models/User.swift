@@ -21,8 +21,7 @@ open class User: Identifiable {
   var profile: String
   var users: [UserCategory]
 
-  init(login: String, name: String, avatarURLString: String, profile: String, users: [UserCategory])
-  {
+  init(login: String, name: String, avatarURLString: String, profile: String, users: [UserCategory]) {
     self.login = login
     self.name = name
     self.avatarURLString = avatarURLString

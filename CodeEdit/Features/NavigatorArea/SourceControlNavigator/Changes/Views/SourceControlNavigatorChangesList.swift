@@ -31,7 +31,7 @@ struct SourceControlNavigatorChangesList: View {
                             file.showInFinder()
                         }
                         Button("Reveal in Project Navigator") {}
-                            .disabled(true) // TODO: Implementation Needed
+                            .disabled(true) // Da Fare: Implementation Needed
                         Divider()
                     }
                     Group {
@@ -41,7 +41,7 @@ struct SourceControlNavigatorChangesList: View {
                             }
                         }
                         Button("Open in New Window") {}
-                            .disabled(true) // TODO: Implementation Needed
+                            .disabled(true) // Da Fare: Implementation Needed
                     }
                     if file.gitStatus == .modified {
                         Group {
