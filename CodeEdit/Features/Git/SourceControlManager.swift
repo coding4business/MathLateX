@@ -74,7 +74,7 @@ final class SourceControlManager: ObservableObject {
                 fileDictionary[item.fileLink]?.staged = true
             }
 
-            // TODO:  Profile
+            // Da Fare:  Profile
             let changedFiles = Array(fileDictionary.values.sorted())
 
             await setChangedFiles(changedFiles)
@@ -97,7 +97,7 @@ final class SourceControlManager: ObservableObject {
                 )
             }
 
-            // TODO:  Profile
+            // Da Fare:  Profile
             let changedFiles = Array(fileDictionary.values.sorted())
 
             return changedFiles
@@ -230,7 +230,7 @@ final class SourceControlManager: ObservableObject {
         Task {
             do {
                 try await gitClient.discardChanges(for: file.url)
-                // TODO: Refresh content of active and unmodified document,
+                // Da Fare: Refresh content of active and unmodified document,
                 // requires CodeEditSourceEditor changes
             } catch {
                 await showAlertForError(title: "Failed to discard changes", error: error)
@@ -243,7 +243,7 @@ final class SourceControlManager: ObservableObject {
         Task {
             do {
                 try await gitClient.discardAllChanges()
-                // TODO: Refresh content of active and unmodified document,
+                // Da Fare: Refresh content of active and unmodified document,
                 // requires CodeEditSourceEditor changes
             } catch {
                 await showAlertForError(title: "Failed to discard changes", error: error)

@@ -1,5 +1,5 @@
 //
-//  HistoryInspectorModel.swift
+//  HistoryInspectorViewModel.swift
 //  CodeEdit
 //
 //  Created by Nanashi Li on 2022/04/18.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HistoryInspectorModel: ObservableObject {
+final class HistoryInspectorViewModel: ObservableObject {
     private(set) var sourceControlManager: SourceControlManager?
 
     /// The base URL of the workspace

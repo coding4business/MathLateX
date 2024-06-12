@@ -5,10 +5,39 @@
 //  Created by Austin Condiff on 10/14/23.
 //
 
+import AppKit
 import Combine
+import Foundation
 import SwiftUI
 
 extension CodeEditWindowController {
+
+
+
+  @objc
+  func toggleSettingsView() {
+      WindowCommands().openWindow(sceneID: .settings)
+  }
+
+  @objc
+  func centeredItemIdentifiers(_ toolbar: NSToolbar) -> Set<NSToolbarItem.Identifier> {
+    return Set<NSToolbarItem.Identifier>(arrayLiteral: .print, .cloudSharing, .showFonts, .showColors)
+  }
+
+  @objc
+  func toggleUserMenu() {
+
+  }
+    @objc
+    func toggleTheme() {
+        self.isDarkMode.toggle()
+        
+        print(self.isDarkMode)
+        print(self.$isDarkMode.wrappedValue)
+        print(self.colorScheme)
+        print(self.colorScheme)
+    }
+
   @objc
   func toggleFirstPanel() {
     guard let firstSplitView = splitViewController.splitViewItems.first else { return }
@@ -19,51 +48,16 @@ extension CodeEditWindowController {
   }
 
   @objc
-  func setMainToolbarPanel() {
-      guard let mainSplitView = splitViewController.splitViewItems.fourth else { return }
-
-      if let toolbar = window?.toolbar,
-         mainSplitView.isCollapsed, !toolbar.items.map(\.itemIdentifier).contains(.itemMainToolbarItem)
-      {
-          window?.toolbar?.insertItem(withItemIdentifier: .itemMainToolbarItem, at: 4)
-      }
-
-      NSAnimationContext.runAnimationGroup { _ in
-          mainSplitView.animator().isCollapsed.toggle()
-      } completionHandler: { [weak self] in
-          if mainSplitView.isCollapsed {
-              self?.window?.animator().toolbar?.removeItem(at: 4)
-          }
-      }
-
-      if let codeEditSplitVC = splitViewController as? CodeEditSplitViewController {
-          codeEditSplitVC.saveInspectorCollapsedState(isCollapsed: mainSplitView.isCollapsed)
-          codeEditSplitVC.hideInspectorToolbarBackground()
-      }
-  }
-
-  @objc
   func toggleLastPanel() {
     guard let lastSplitView = splitViewController.splitViewItems.last else { return }
-
-    if let toolbar = window?.toolbar,
-      lastSplitView.isCollapsed, !toolbar.items.map(\.itemIdentifier).contains(.itemListTrackingSeparator)
-    {
-      window?.toolbar?.insertItem(withItemIdentifier: .itemListTrackingSeparator, at: 4)
-    }
-
-    NSAnimationContext.runAnimationGroup { _ in
-      lastSplitView.animator().isCollapsed.toggle()
-    } completionHandler: { [weak self] in
-      if lastSplitView.isCollapsed {
-        self?.window?.animator().toolbar?.removeItem(at: 4)
-      }
-    }
-
+    lastSplitView.animator().isCollapsed.toggle()
     if let codeEditSplitVC = splitViewController as? CodeEditSplitViewController {
-      codeEditSplitVC.saveInspectorCollapsedState(isCollapsed: lastSplitView.isCollapsed)
-      codeEditSplitVC.hideInspectorToolbarBackground()
+      codeEditSplitVC.saveNavigatorCollapsedState(isCollapsed: lastSplitView.isCollapsed)
     }
+  }
+
+  func createAddToolbarItem(itemIdentifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
+    return NSToolbarItem(itemIdentifier: itemIdentifier)
   }
 
   /// These are example items that added as commands to command palette
@@ -76,10 +70,24 @@ extension CodeEditWindowController {
     )
 
     CommandManager.shared.addCommand(
+      name: "Toggle Settings View",
+      title: "Toggle Settings View",
+      id: "toggle_setting_view",
+      command: CommandClosureWrapper(closure: { self.toggleSettingsView() })
+    )
+
+    CommandManager.shared.addCommand(
       name: "Toggle Navigator",
       title: "Toggle Navigator",
       id: "toggle_left_sidebar",
       command: CommandClosureWrapper(closure: { self.toggleFirstPanel() })
+    )
+
+    CommandManager.shared.addCommand(
+      name: "Toggle Navigator",
+      title: "Toggle Navigator",
+      id: "toggle_user_menu",
+      command: CommandClosureWrapper(closure: { self.toggleUserMenu() })
     )
 
     CommandManager.shared.addCommand(
@@ -88,12 +96,14 @@ extension CodeEditWindowController {
       id: "toggle_right_sidebar",
       command: CommandClosureWrapper(closure: { self.toggleLastPanel() })
     )
+
       CommandManager.shared.addCommand(
-        name: "Toggle User Profile",
-        title: "Toggle User Profile",
-        id: "toggle_user_profile",
-        command: CommandClosureWrapper(closure: { self.setMainToolbarPanel() })
+        name: "Toggle Inspector",
+        title: "Toggle Inspector",
+        id: "toggle_theme",
+        command: CommandClosureWrapper(closure: { self.toggleTheme() })
       )
+
   }
 
   // Listen to changes in all tabs/files
@@ -143,6 +153,27 @@ extension CodeEditWindowController {
     self.setDocumentEdited(hasEditedDocuments)
   }
 
+  private func insertToolbarItemIfNeeded() {
+    guard !(window?.toolbar?.items.contains(where: { $0.itemIdentifier == .branchPicker }) ?? true)
+    else {
+      return
+    }
+    window?.toolbar?.insertItem(withItemIdentifier: .branchPicker, at: 4)
+
+  }
+
+  /// Quick fix for list tracking separator needing to be removed after closing the inspector with a drag
+  private func removeToolbarItemIfNeeded() {
+    guard
+      let index = window?.toolbar?.items.firstIndex(
+        where: { $0.itemIdentifier == .itemListTrackingSeparator }
+      )
+    else {
+      return
+    }
+    window?.toolbar?.removeItem(at: index)
+  }
+
   @IBAction func openWorkspaceSettings(_ sender: Any) {
     guard let workspaceSettings, let window = window, let workspace = workspace else {
       return
@@ -170,15 +201,23 @@ extension CodeEditWindowController {
 }
 
 extension NSToolbarItem.Identifier {
-  static let toggleFirstSidebarItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
-    "ToggleFirstSidebarItem")
-  static let toggleLastSidebarItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
-    "ToggleLastSidebarItem")
+  static let toggleSettingsSidebarItem: NSToolbarItem.Identifier =
+    NSToolbarItem.Identifier("ToggleSettingsSidebarItem")
+  static let toggleFirstSidebarItem: NSToolbarItem.Identifier =
+    NSToolbarItem.Identifier("ToggleFirstSidebarItem")
+  static let toggleLastSidebarItem: NSToolbarItem.Identifier =
+    NSToolbarItem.Identifier("ToggleLastSidebarItem")
   static let itemListTrackingSeparator = NSToolbarItem.Identifier("ItemListTrackingSeparator")
   static let branchPicker: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BranchPicker")
-  static let toggleFirstSidebarItem1: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
-    "ToggleFirstSidebarItem")
-  static let itemMainToolbarItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier(
-    "itemMainToolbarItem")
-
+  static let toggleUserMenu: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleUserMenu")
+    static let toggleTheme: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleTheme")
+  static let firstSidebarToolbarItems: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
+  static let middleToolbarItems: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
+  static let lastSidebarToolbarItem: [NSToolbarItem.Identifier] = [
+    NSToolbarItem.Identifier("ToggleUserMenu")
+  ]
 }

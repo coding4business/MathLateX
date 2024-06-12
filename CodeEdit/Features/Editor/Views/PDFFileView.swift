@@ -7,6 +7,14 @@
 
 import SwiftUI
 import PDFKit.PDFView
+import LaTeXSwiftUI
+
+extension PDFView {
+    var documentView: NSView? { get{
+        return documentView
+    } set{
+    } }
+}
 
 /// A view for previewing a PDF file.
 ///
@@ -51,6 +59,8 @@ struct PDFFileView: NSViewRepresentable {
             // What can happen is the view doesn't redraw, so whatever was in the editor area view remains as is.
             return pdfView
         }
+        let view = NSHostingView(rootView: LaTeX( pdfDocument.string!))
+        pdfView.documentView =  view
         pdfView.document = pdfDocument
         pdfView.backgroundColor = NSColor.controlBackgroundColor
         return pdfView

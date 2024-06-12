@@ -248,7 +248,7 @@ struct EditorTabView: View {
                     .opacity(isActive ? 0 : 1)
                 }
             }
-            // TODO: Enable the following code snippet when dragging-out behavior should be allowed.
+            // Da Fare: Enable the following code snippet when dragging-out behavior should be allowed.
             // Since we didn't handle the drop-outside event, dragging-out is disabled for now.
             //            .onDrag({
             //                onDragTabId = item.tabID

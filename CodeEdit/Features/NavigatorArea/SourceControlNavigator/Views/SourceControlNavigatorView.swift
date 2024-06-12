@@ -22,7 +22,7 @@ struct SourceControlNavigatorView: View {
                                 try await Task.sleep(for: .seconds(10))
                             }
                         } catch {
-                            // TODO: if source fetching fails, display message
+                            // Da Fare: if source fetching fails, display message
                         }
                     }
             }

@@ -11,7 +11,7 @@ struct HistoryInspectorView: View {
 
     @EnvironmentObject private var editorManager: EditorManager
 
-    @ObservedObject private var model: HistoryInspectorModel
+    @ObservedObject private var model: HistoryInspectorViewModel
 
     @State var selection: GitCommit?
 

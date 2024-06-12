@@ -178,7 +178,7 @@ final class ThemeModel: ObservableObject {
                           let editorColors = try theme.editor.allProperties() as? [String: Theme.Attributes]
                     else {
                         print("error")
-                        // TODO: Throw a proper error
+                        // Da Fare: Throw a proper error
                         throw NSError() // swiftlint:disable:this discouraged_direct_init
                     }
 
@@ -298,7 +298,7 @@ final class ThemeModel: ObservableObject {
                       let oTermColors = try originalTheme.terminal.allProperties() as? [String: Theme.Attributes],
                       let oEditColors = try originalTheme.editor.allProperties() as? [String: Theme.Attributes]
                 else {
-                    // TODO: Throw a proper error
+                    // Da Fare: Throw a proper error
                     throw NSError() // swiftlint:disable:this discouraged_direct_init
                 }
 

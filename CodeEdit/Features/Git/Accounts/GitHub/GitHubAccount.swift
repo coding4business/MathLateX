@@ -7,7 +7,7 @@
 
 import Foundation
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 
 struct GitHubAccount {
     let configuration: GitHubTokenConfiguration

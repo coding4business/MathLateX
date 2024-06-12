@@ -15,13 +15,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @Environment(\.openWindow)
     private var openWindow
 
+    static private(set) var instance: AppDelegate!
+    lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+
     func applicationDidFinishLaunching(_ notification: Notification) {
+
+
+        AppDelegate.instance = self
         setupServiceContainer()
         enableWindowSizeSaveOnQuit()
         Settings.shared.preferences.general.appAppearance.applyAppearance()
         checkForFilesToOpen()
 
-        NSApp.closeWindow(.welcome, .about)
 
         DispatchQueue.main.async {
             var needToHandleOpen = true
@@ -157,6 +162,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
         FeedbackView().showWindow()
     }
+
+    @IBAction private func openSettings(_ sender: Any) {
+        openWindow(sceneID: .settings)
+    }
+
 
     @IBAction private func checkForUpdates(_ sender: Any) {
         updater.checkForUpdates()

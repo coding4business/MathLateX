@@ -122,7 +122,7 @@ struct AccountsSettingsDetailsView: View {
               print("Choose a ssh key...")
               currentAccount.sshKey = prevSshKey
             } else {
-              // TODO: Validate SSH key and check if it is uploaded to git provider.                            
+              // Da Fare: Validate SSH key and check if it is uploaded to git provider.                            
               // If not provide button to do so
             }
             prevSshKey = currentAccount.sshKey

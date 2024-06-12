@@ -7,7 +7,7 @@
 
 import Foundation
 
-// TODO: DOCS (Nanashi Li)
+// Da Fare: DOCS (Nanashi Li)
 
 class GitHubFile: Codable {
     private(set) var id: Int = -1

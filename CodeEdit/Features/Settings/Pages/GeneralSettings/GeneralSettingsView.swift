@@ -68,7 +68,7 @@ struct GeneralSettingsView: View {
             Section {
                 updateChecker
                 autoUpdateToggle
-                // TODO: Uncomment when production build is released.
+                // Da Fare: Uncomment when production build is released.
                 // prereleaseToggle
             }
         }
@@ -92,7 +92,7 @@ private extension GeneralSettingsView {
         }
     }
 
-    // TODO: Implement reflecting Show Issues preference and remove disabled modifier
+    // Da Fare: Implement reflecting Show Issues preference and remove disabled modifier
     var showIssues: some View {
         Picker("Show Issues", selection: $settings.showIssues) {
             Text("Show Inline")
@@ -226,7 +226,7 @@ private extension GeneralSettingsView {
         }
     }
 
-    // TODO: Implement reflecting Issue Navigator Detail preference and remove disabled modifier
+    // Da Fare: Implement reflecting Issue Navigator Detail preference and remove disabled modifier
     var issueNavigatorDetail: some View {
         Picker("Issue Navigator Detail", selection: $settings.issueNavigatorDetail) {
             ForEach(SettingsData.NavigatorDetail.allCases, id: \.self) { tag in
@@ -236,7 +236,7 @@ private extension GeneralSettingsView {
         .disabled(true)
     }
 
-    // TODO: Implement reset for Don't Ask Me warnings Button and remove disabled modifier
+    // Da Fare: Implement reset for Don't Ask Me warnings Button and remove disabled modifier
     var dialogWarnings: some View {
         LabeledContent("Dialog Warnings") {
             Button(action: {

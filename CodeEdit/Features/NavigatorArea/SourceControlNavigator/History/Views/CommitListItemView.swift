@@ -63,7 +63,7 @@ struct CommitListItemView: View {
     var body: some View {
         HStack(alignment: .top) {
             if width > 360 {
-                AsyncImage(url: URL(string: "https://www.gravatar.com/avatar/\(generateAvatarHash())")) { phase in
+                SwiftUI.AsyncImage(url: URL(string: "https://www.gravatar.com/avatar/\(generateAvatarHash())")) { phase in
                     if let image = phase.image {
                         image
                             .resizable()
@@ -173,11 +173,11 @@ struct CommitListItemView: View {
             }
             Group {
                 Button("Tag \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                    .disabled(true) // Da Fare: Implementation Needed
                 Button("New Branch from \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                    .disabled(true) // Da Fare: Implementation Needed
                 Button("Cherry-Pick \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                    .disabled(true) // Da Fare: Implementation Needed
             }
             Group {
                 Divider()
@@ -189,10 +189,10 @@ struct CommitListItemView: View {
                     Divider()
                 }
                 Button("Check Out \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                    .disabled(true) // Da Fare: Implementation Needed
                 Divider()
                 Button("History Editor Help") {}
-                    .disabled(true) // TODO: Implementation Needed
+                    .disabled(true) // Da Fare: Implementation Needed
             }
         }
     }

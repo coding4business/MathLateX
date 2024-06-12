@@ -97,6 +97,15 @@ struct FileCommands: Commands {
                 NSApp.sendAction(#selector(CodeEditWindowController.saveDocument(_:)), to: nil, from: nil)
             }
             .keyboardShortcut("s")
+
+            Button("print"){
+                NSApp.sendAction(#selector(NSWindow.printWindow(_:)), to: nil, from: nil)
+            }
+            .keyboardShortcut("p")
         }
     }
+
+    func printDocument() {
+    }
 }
+

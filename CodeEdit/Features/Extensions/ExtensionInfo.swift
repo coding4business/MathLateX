@@ -106,7 +106,7 @@ extension ExtensionInfo {
 
     /// Icon of appex folder
     public var icon: NSImage? {
-        // TODO: Use icon of extension instead of parent app
+        // Da Fare: Use icon of extension instead of parent app
         // A way to get the path of an .appex file should be used.
         // Unfortunately, NSWorkspace.shared.urlForApplication only seems to work for .app
         let path = NSWorkspace.shared.urlForApplication(withBundleIdentifier: parentBundleIdentifier)

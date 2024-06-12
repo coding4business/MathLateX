@@ -40,7 +40,7 @@ extension WorkspaceDocument.SearchState {
                             )
                             return true
                         } catch {
-                            // TODO: Write log; issue number: #0000
+                            // Da Fare: Write log; issue number: #0000
                             return false
                         }
                     }

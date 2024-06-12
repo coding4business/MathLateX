@@ -134,7 +134,7 @@ final class ProjectNavigatorViewController: NSViewController {
         }
     }
 
-    // TODO: File filtering
+    // Da Fare: File filtering
 }
 
 // MARK: - NSOutlineViewDataSource
