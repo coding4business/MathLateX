@@ -17,7 +17,6 @@ struct MathLateXAppMenuBar: Scene {
             systemImage: "star",
             isInserted: $showMenuBarExtra
         ) {
-                // TODO: - Menu()
         }
     }
 }
