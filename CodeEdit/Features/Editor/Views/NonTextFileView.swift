@@ -27,15 +27,20 @@ struct NonTextFileView: View {
 
                 switch fileDocument.utType {
                 case .some(.image):
-                    ImageFileView(fileURL)
+                        PDFFileView(fileURL)
                         .modifier(UpdateStatusBarInfo(withURL: fileURL))
-
+                case .some(.text):
+                        PDFFileView(fileURL)
+                            .modifier(UpdateStatusBarInfo(withURL: fileURL))
+                case .some(.data):
+                        PDFFileView(fileURL)
+                            .modifier(UpdateStatusBarInfo(withURL: fileURL))
                 case .some(.pdf):
                     PDFFileView(fileURL)
                         .modifier(UpdateStatusBarInfo(withURL: fileURL))
 
                 default:
-                    AnyFileView(fileURL)
+                        PDFFileView(fileURL)
                         .modifier(UpdateStatusBarInfo(withURL: fileURL))
                 }
 

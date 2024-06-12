@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LaTeXSwiftUI
 
 struct EditorAreaView: View {
     @AppSettings(\.general.showEditorPathBar)

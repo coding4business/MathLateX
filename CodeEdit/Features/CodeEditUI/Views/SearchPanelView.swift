@@ -61,8 +61,7 @@ struct SearchPanelView<RowView: View, PreviewView: View, Option: Identifiable & 
                         .padding(.leading, 1)
                         .padding(.trailing, 10)
                     TextField(title, text: $text)
-                        .font(.system(size: 20, weight: .light, design: .default))
-                        .textFieldStyle(.plain)
+
                         .onSubmit {
                             if let selection {
                                 onRowClick(selection)

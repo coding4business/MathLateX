@@ -11,10 +11,12 @@ import Combine
 
 final class CodeEditWindowController: NSWindowController, NSToolbarDelegate, ObservableObject {
     static let minSidebarWidth: CGFloat = 242
-
     @Published var navigatorCollapsed = false
     @Published var inspectorCollapsed = false
     @Published var toolbarCollapsed = false
+    @AppStorage("isDarkMode") var isDarkMode: Bool = true
+    @AppStorage("isPresented") var isPresented: Bool = false
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     var observers: [NSKeyValueObservation] = []
 
@@ -41,7 +43,6 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate, Obs
         // An NSHostingController is used, so the root viewController of the window is a SwiftUI-managed one.
         // This allows us to use some SwiftUI features, like focusedSceneObject.
         contentViewController = NSHostingController(rootView: view)
-
         observers = [
             splitViewController.splitViewItems.first!.observe(\.isCollapsed, changeHandler: { [weak self] item, _ in
                 self?.navigatorCollapsed = item.isCollapsed
@@ -81,7 +82,6 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate, Obs
         navigator.titlebarSeparatorStyle = .none
         navigator.minimumThickness = Self.minSidebarWidth
         navigator.collapseBehavior = .useConstraints
-
         splitVC.addSplitViewItem(navigator)
 
         let workspaceView = SettingsInjector {

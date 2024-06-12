@@ -50,6 +50,7 @@ extension CodeEditWindowController {
       .toggleSettingsSidebarItem,
       .toggleSettingsSidebarItem,
       .flexibleSpace,
+      .toggleTheme,
       .toggleLastSidebarItem,
       .itemListTrackingSeparator,
       .flexibleSpace,
@@ -77,6 +78,7 @@ extension CodeEditWindowController {
       .toggleSettingsSidebarItem,
       .toggleSettingsSidebarItem,
       .flexibleSpace,
+      .toggleTheme,
       .toggleLastSidebarItem,
       .itemListTrackingSeparator,
       .flexibleSpace,
@@ -87,6 +89,11 @@ extension CodeEditWindowController {
   func toggleToolbar() {
     toolbarCollapsed.toggle()
     updateToolbarVisibility()
+  }
+
+  func toolbarThemeItem() -> NSToolbarItem {
+    return NSToolbarItem(itemIdentifier: .toggleTheme)
+
   }
 
   func toolbarItems() -> [NSToolbarItem.Identifier] {
@@ -177,14 +184,27 @@ extension CodeEditWindowController {
       toolbarItem.target = self
       toolbarItem.action = #selector(self.toggleFirstPanel)
       return toolbarItem
-    case .toggleLastSidebarItem:
+    case .toggleTheme:
       let toolbarItem = NSToolbarItem(
-        itemIdentifier: NSToolbarItem.Identifier.toggleLastSidebarItem)
+        itemIdentifier: NSToolbarItem.Identifier.toggleTheme)
+            toolbarItem.image = NSImage(
+                systemSymbolName: isDarkMode ? "moon" : "",
+                accessibilityDescription: nil
+            )?.withSymbolConfiguration(.init(scale: .large))
+            toolbarItem.label = "Navigator Sidebar"
+      toolbarItem.paletteLabel = "Navigator Sidebar"
+      toolbarItem.toolTip = "Hide or show the Navigator"
+      toolbarItem.isBordered = true
+      toolbarItem.target = self
+      toolbarItem.action = #selector(self.toggleTheme)
+      return toolbarItem
+    case .toggleLastSidebarItem:
+      let toolbarItem = NSToolbarItem( itemIdentifier: NSToolbarItem.Identifier.toggleLastSidebarItem)
       toolbarItem.label = "Inspector Sidebar"
       toolbarItem.paletteLabel = "Inspector Sidebar"
       toolbarItem.toolTip = "Hide or show the Inspectors"
       toolbarItem.isBordered = true
-      toolbarItem.target = self
+            toolbarItem.target = self //.preferredColorScheme(self.$isDarkMode.wrappedValue ? .dark : .light)
       toolbarItem.action = #selector(self.toggleLastPanel)
       toolbarItem.image = NSImage(
         systemSymbolName: "sidebar.trailing",
@@ -192,7 +212,7 @@ extension CodeEditWindowController {
       )?.withSymbolConfiguration(.init(scale: .large))
       return toolbarItem
     case .itemListTrackingSeparator:
-            _ = NSToolbarItem(
+      _ = NSToolbarItem(
         itemIdentifier: NSToolbarItem.Identifier.itemListTrackingSeparator)
       guard let splitViewController else { return nil }
       return NSTrackingSeparatorToolbarItem(

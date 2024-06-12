@@ -1,12 +1,13 @@
 //
-//  HistoryInspectorView.swift
-//  CodeEdit
+//  ProfileInspectorView.swift
+//  MathLateX
 //
-//  Created by Nanashi Li on 2022/03/24.
+//  Created by christian on 08/06/24.
 //
+
 import SwiftUI
 
-struct HistoryInspectorView: View {
+struct ProfileInspectorView: View {
     @EnvironmentObject private var workspace: WorkspaceDocument
 
     @EnvironmentObject private var editorManager: EditorManager
@@ -15,8 +16,8 @@ struct HistoryInspectorView: View {
 
     @State var selection: GitCommit?
 
-    /// Initialize with GitClient
-    /// - Parameter gitClient: a GitClient
+        /// Initialize with GitClient
+        /// - Parameter gitClient: a GitClient
     init() {
         self.model = .init()
     }
@@ -51,7 +52,7 @@ struct HistoryInspectorView: View {
                 await model.setFile(url: editorManager.activeEditor.selectedTab?.file.url.path())
             }
         }
-        .onChange(of: editorManager.activeEditor.selectedTab) { _ in
+        .onChange(of: editorManager.activeEditor.selectedTab, initial: true) { _,_  in
             Task {
                 await model.setFile(url: editorManager.activeEditor.selectedTab?.file.url.path())
             }
@@ -61,4 +62,8 @@ struct HistoryInspectorView: View {
             await model.setFile(url: editorManager.activeEditor.selectedTab?.file.url.path)
         }
     }
+}
+
+#Preview {
+    ProfileInspectorView()
 }

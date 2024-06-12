@@ -23,7 +23,7 @@ struct InspectorAreaView: View {
     init(viewModel: InspectorAreaViewModel) {
         self.viewModel = viewModel
 
-        viewModel.tabItems = [.file, .gitHistory]
+        viewModel.tabItems = [.file, .gitHistory, .profile]
         viewModel.tabItems += extensionManager
             .extensions
             .map { ext in

@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 /// user entity
-open class UsersRoot {
+class UsersRoot {
   var users: [User] = []
 }
 
-open class User: Identifiable {
+@Observable
+class User: Identifiable {
   public var id: String { login }
   var login: String
   var name: String

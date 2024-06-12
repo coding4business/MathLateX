@@ -12,9 +12,11 @@ import SwiftUI
 
 extension CodeEditWindowController {
 
+
+
   @objc
   func toggleSettingsView() {
-    WindowCommands().openWindow(sceneID: .settings)
+      WindowCommands().openWindow(sceneID: .settings)
   }
 
   @objc
@@ -26,6 +28,15 @@ extension CodeEditWindowController {
   func toggleUserMenu() {
 
   }
+    @objc
+    func toggleTheme() {
+        self.isDarkMode.toggle()
+        
+        print(self.isDarkMode)
+        print(self.$isDarkMode.wrappedValue)
+        print(self.colorScheme)
+        print(self.colorScheme)
+    }
 
   @objc
   func toggleFirstPanel() {
@@ -85,6 +96,13 @@ extension CodeEditWindowController {
       id: "toggle_right_sidebar",
       command: CommandClosureWrapper(closure: { self.toggleLastPanel() })
     )
+
+      CommandManager.shared.addCommand(
+        name: "Toggle Inspector",
+        title: "Toggle Inspector",
+        id: "toggle_theme",
+        command: CommandClosureWrapper(closure: { self.toggleTheme() })
+      )
 
   }
 
@@ -192,6 +210,7 @@ extension NSToolbarItem.Identifier {
   static let itemListTrackingSeparator = NSToolbarItem.Identifier("ItemListTrackingSeparator")
   static let branchPicker: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BranchPicker")
   static let toggleUserMenu: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleUserMenu")
+    static let toggleTheme: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleTheme")
   static let firstSidebarToolbarItems: [NSToolbarItem.Identifier] = [
     NSToolbarItem.Identifier("ToggleUserMenu")
   ]

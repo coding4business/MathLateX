@@ -211,6 +211,9 @@
     "Amend" : {
 
     },
+    "App Menu Bar Extra" : {
+
+    },
     "Appearance" : {
 
     },
@@ -537,6 +540,9 @@
     "Dark" : {
 
     },
+    "Dark Mode" : {
+
+    },
     "Decrease" : {
 
     },
@@ -736,6 +742,9 @@
 
     },
     "Go Forward" : {
+
+    },
+    "Hello, World!" : {
 
     },
     "Hide all" : {
@@ -1082,6 +1091,9 @@
         }
       }
     },
+    "Profile View" : {
+
+    },
     "Project Navigator Size" : {
 
     },
@@ -1254,6 +1266,9 @@
     "Settings..." : {
 
     },
+    "Sheet content" : {
+
+    },
     "Shell" : {
 
     },
@@ -1341,6 +1356,12 @@
 
     },
     "Show results with matching text" : {
+
+    },
+    "Show sheet" : {
+
+    },
+    "Show Sheet" : {
 
     },
     "Show source control changes" : {

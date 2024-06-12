@@ -2,6 +2,7 @@ disabled_rules:
   - Da Fare
   - trailing_comma
   - nesting
+  - file_length
 
 type_name:
   excluded:
@@ -17,10 +18,10 @@ identifier_name:
 
 # paths to ignore during linting.
 excluded:
-  - CodeEditModules/.build # Where Swift Package Manager checks out dependency sources
+  - MathLateXModules/.build # Where Swift Package Manager checks out dependency sources
   - DerivedData
-  - CodeEdit/build
-  - DerivedData/CodeEdit-*/build
+  - MathLateX/Build
+  - DerivedData/MathLateXEdit-*/Build
   - Tests
   - .build
 
